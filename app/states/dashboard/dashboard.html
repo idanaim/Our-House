@@ -1,0 +1,120 @@
+<h1 STYLE="direction: rtl">ברוכים הבאים לבית ל OUR HOSUE</h1>
+<button class="btn-danger" ng-click="Dashboard.openAdminPost()">Post</button>
+<div class="row">
+  <div class="col-lg-8">
+    <div class="row">
+      <div class="" id="pie-chart">
+
+        <div class="panel panel-default">
+          <div class="panel-heading text-right">סה"כ התפלגות הקופה</div>
+          <div class="panel-body">
+            <div class="row">
+
+              <div class="col-lg-12">
+                <canvas id="base" class="chart-base"
+                        chart-type="Dashboard.pie.type"
+                        chart-data="Dashboard.pie.data"
+                        chart-labels="Dashboard.pie.labels" chart-legend="true">
+                </canvas>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="text-right">
+        <span class="pull-right">*</span>
+        להשוואה עם שנים קומות
+        <a href=""
+           class="btn-link"
+           ng-click="isCollapsed = !isCollapsed"> לחץ כאן</a>
+
+        <div class="t" uib-collapse="!isCollapsed">
+          <div class="panel panel-default">
+            <div class="panel-heading text-right">ביחס לשנים קודמות</div>
+            <div class="panel-body">
+              <canvas id="bar"
+                      class="chart chart-bar"
+                      chart-data="Dashboard.barChart.data"
+                      chart-legend="true"
+                      chart-labels="Dashboard.barChart.labels"
+                      chart-series="Dashboard.barChart.series">
+              </canvas>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <div class="col-xs-4">
+    <div class="panel panel-default">
+      <div class="panel-heading text-right">מצב הקופה</div>
+      <div class="panel-body">
+        <div class="row">
+          <div class="col-xs-6 text-right"><span>{{ Dashboard.currentBuilding.jackpot }}</span>
+          </div>
+          <div class="col-xs-6"><span class="pull-right">סכום התחלתי</span>
+          </div>
+
+        </div>
+        <div class="row">
+          <div class="col-xs-6">
+            <div ng-repeat="expnese in Dashboard.buildingExpenses"
+                 class="text-right">{{ expnese.amount }}
+            </div>
+          </div>
+          <div class=" col-xs-6 text-right">הוצאות</div>
+        </div>
+        <div class="row">
+          <div class="col-xs-6 text-right"><span>{{ Dashboard.total }}</span>
+          </div>
+          <div class="col-xs-6"><span class="pull-right">יתרה</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="panel panel-default">
+        <div class="panel-heading text-right">רשימת דיירים</div>
+        <div class="panel-body">
+
+          <ul class="list-group">
+            <li class="list-group-item"
+                ng-repeat="apartment in Dashboard.Apartments">
+              <span
+                class="apartment-number">{{ apartment.apartmentNumber }} : </span>
+              <span class="apartment-resident">{{ apartment.name }}-{{ apartment.lastname }}</span>
+            </li>
+
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+
+  <div class="col-lg-8">
+    <div class="panel panel-default">
+      <div class="panel-heading text-right">לוח מודעות</div>
+      <div class="panel-body" style="height: 400px;">
+        <div>
+          <carousel interval="5000">
+            <slide ng-repeat="post in Dashboard.buildingPosts">
+              <div><h4>{{ post.title }}</h4>
+                <p>{{ post.body }}</p>
+              </div>
+            </slide>
+          </carousel>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div  class="col-xs-4">
+    <oh-form></oh-form>
+
+  </div>
+</div>

@@ -1,0 +1,69 @@
+{
+  "name": "OurHouse",
+  "version": "1.0.0",
+  "description": "AngularJS Application",
+  "main": "app.js",
+  "babel": {
+    "stage": 1
+  },
+  "scripts": {
+    "start": "NODE_ENV=development node_modules/.bin/webpack-dev-server --hot --progress",
+    "build": "NODE_ENV=production node_modules/.bin/webpack -p --progress",
+    "test": "NODE_ENV=test node_modules/.bin/karma start --single-run"
+  },
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "author": "",
+  "license": "MIT",
+  "homepage": "",
+  "dependencies": {
+    "angular": "1.4.8",
+    "angular-animate": "1.4.3",
+    "angular-bootstrap": "0.12.2",
+    "angular-carousel": "1.0.1",
+    "angular-chart.js": "0.8.6",
+    "angular-mocks": "1.4.8",
+    "angular-parse": "0.2.2",
+    "angular-touch": "1.4.3",
+    "angular-ui-bootstrap": "0.14.3",
+    "angular-ui-router": "0.2.15",
+    "bootstrap": "3.3.6",
+    "bootstrap-sass": "3.3.6",
+    "font-awesome": "4.5.0",
+    "jquery": "2.1.4"
+  },
+  "devDependencies": {
+    "autoprefixer-loader": "3.1.0",
+    "babel-core": "5.8.29",
+    "babel-loader": "5.3.2",
+    "clean-webpack-plugin": "0.1.4",
+    "css-loader": "0.21.0",
+    "eslint": "1.10.0",
+    "eslint-plugin-angular": "0.13.0",
+    "file-loader": "0.8.4",
+    "html-loader": "0.3.0",
+    "html-webpack-plugin": "1.6.1",
+    "jquery": "2.1.4",
+    "json-loader": "0.5.3",
+    "karma": "0.13.12",
+    "karma-chrome-launcher": "0.2.1",
+    "karma-clear-screen-reporter": "0.0.1",
+    "karma-jasmine": "0.3.6",
+    "karma-mocha-reporter": "1.1.1",
+    "karma-osx-reporter": "0.2.1",
+    "karma-sourcemap-loader": "0.3.6",
+    "karma-webpack": "1.7.0",
+    "lodash": "3.10.1",
+    "ng-annotate-loader": "0.0.6",
+    "ngtemplate-loader": "1.3.0",
+    "node-sass": "3.4.0",
+    "parse": "1.6.8",
+    "sass-loader": "3.0.0",
+    "style-loader": "0.13.0",
+    "url-loader": "0.5.6",
+    "webpack": "1.12.2",
+    "webpack-dev-server": "1.12.1"
+  }
+}
