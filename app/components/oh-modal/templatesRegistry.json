@@ -1,3 +1,4 @@
 {
-  "AdminPost": "/components/oh-modal/components/admin-post/admin-post.html"
+  "AdminPost": "/components/oh-modal/components/admin-post/admin-post.html",
+  "UserManagement":"/components/oh-modal/components/user-management/user-management.html"
 }

@@ -26,7 +26,7 @@ const config = {
   context: path.join(__dirname, '/app'),
   entry: {
     app: 'app.js',
-    vendor: ['angular', 'angular-ui-router'],
+    vendor: ['jquery','angular', 'angular-ui-router'],
   },
 
   output: {
@@ -113,10 +113,10 @@ const config = {
           'html'
         ]
       },
-      {
-        test: require.resolve('jquery'),
-        loader: 'expose?jQuery'
-      },
+      //{
+      //  test: require.resolve('jquery/dist/jquery'),
+      //  loader: 'expose?jQuery'
+      //},
     ]
   },
 

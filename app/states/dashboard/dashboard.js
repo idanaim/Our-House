@@ -21,9 +21,7 @@ export class DashboardController {
       series: ["Series A", "Series B"]
     }
   }
-  openAdminPost(){
-    this.Modal.open('AdminPost')
-  }
+
 
   getDashboardData() {
     this.BuildingPosts.getAllPostByBuildingId('9hlOUsQd9K').then((posts)=> {

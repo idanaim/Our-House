@@ -15,6 +15,7 @@ import States     from 'states/states';
 
 
 //vendors
+import 'jquery';
 import 'angular';
 import 'lodash';
 import 'angular-chart.js';

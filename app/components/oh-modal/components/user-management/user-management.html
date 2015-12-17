@@ -1,0 +1,72 @@
+<!-- Form Module-->
+<div class="user-management"
+     style="direction: rtl">
+  <div class="module form-module">
+    <div class="toggle-register" ng-click="UserManagement.toggleRegister()"><i
+      class="fa fa-times fa-pencil"></i>
+
+      <div class="tooltip">Click Me</div>
+    </div>
+    <div class="form animate-hide" ng-hide="UserManagement.register">
+      <h2>היכנס לחשבונך</h2>
+
+      <form>
+        <input type="text" ng-model="user.username" placeholder="Email"/>
+        <input type="password" ng-model="user.password" placeholder="Password"/>
+        <button ng-click="UserManagement.login(user)">היכנס</button>
+        <div class="cta"><a href="http://andytran.me">שכחת סיסמה?</a>
+        </div>
+      </form>
+    </div>
+    <div class="form-create animate-hide" ng-hide="!UserManagement.register">
+      <h2>יצירת חשבון</h2>
+
+
+      <h4>האם מקום המגורים שלך רשום?</h4>
+
+      <div class="row text-center">
+        <button class="button-um-inline"
+                ng-click="UserManagement.toggleExist(true)"
+          >כן
+        </button>
+        <button ng-click="UserManagement.toggleExist(false)"
+                class="button-um-inline">לא
+        </button>
+      </div>
+
+      <form class="animate-hide" ng-hide="!UserManagement.existBuilding">
+        <div class="padding-top-20">
+          <input type="email" ng-model="sendRequest.email" placeholder="מייל"/>
+          <input type="password" ng-model="sendRequest.password"
+                 placeholder="סיסמא"/>
+          <input type="text" ng-model="sendRequest.name" placeholder="שם"/>
+          <input type="tel" ng-model="sendRequest.phone" placeholder="טלפון"/>
+          <input type="text" ng-model="sendRequest.lastName"
+                 placeholder="משפחה"/>
+          <input type="number" ng-model="sendRequest.apartmentNumber"
+                 placeholder="מס' דירה"/>
+          <input type="text" ng-model="sendRequest.address"
+                 placeholder="כתובת"/>
+          <input type="text" ng-model="sendRequest.city" placeholder="עיר"/>
+          <button ng-click="UserManagement.sendRequestFromAdmin(sendRequest)">
+            שלח בקשה
+          </button>
+        </div>
+      </form>
+      <form class="animate-hide" ng-hide="!UserManagement.newBuliding">
+        <div class="padding-top-20">
+          <input type="email" ng-model="newUser.email" placeholder="מייל"/>
+          <input type="password" ng-model="newUser.password" placeholder="סיסמא"/>
+          <input type="text" ng-model="newUser.address" placeholder="כתובת"/>
+          <input type="text" ng-model="newUser.city" placeholder="עיר"/>
+          <input type="number" ng-model="newUser.apartmentNumber" placeholder="מס' דירה"/>
+          <input type="number" ng-model="newUser.apartmentsNumber" placeholder="מס' דירות סה''כ"/>
+          <input type="tel" ng-model="newUser.phone" placeholder="טלפון"/>
+          <button ng-click="UserManagement.createNewBuilding(newUser)">הרשמה
+          </button>
+        </div>
+      </form>
+    </div>
+
+  </div>
+</div>

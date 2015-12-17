@@ -32,34 +32,40 @@ export class User {
   }
 
   signUp(newUser) {
+    let deferred = this.$q.defer();
+    let user= new this.Parse.User();
+    user.set("username", newUser.email);
+    user.set("password", newUser.password);
+    user.set("email", newUser.email);
+    user.set("admin", newUser.admin);
+    user.set("phone", newUser.phone);
+    user.set("apartmentNumber", newUser.apartmentNumber);
+    user.set("buildingId", newUser.buildingId);
 
-    this.User.set("username", newUser.email);
-    this.User.set("password", newUser.password);
-    this.User.set("email", newUser.email);
-
-    // other fields can be set just like with Parse.Object
-    this.User.set("phone", newUser.phone);
-
-    this.User.signUp(null, {
+    user.signUp(null, {
       success: function (user) {
-        console.log(user);
+        deferred.resolve(user);
       },
       error: function (user, error) {
         // Show the error message somewhere and let the user try again.
         alert("Error: " + error.code + " " + error.message);
       }
     });
+    return deferred.promise;
   }
 
-  login(user) {
-    this.User.logIn(user.username, user.password, {
+  login(userLogin) {
+    let deferred = this.$q.defer();
+    console.log("userLogin",userLogin);
+    this.Parse.User.logIn(userLogin.username, userLogin.password, {
       success: function (user) {
-        console.log(user)
+        deferred.resolve(user);
       },
       error: function (user, error) {
         // The login failed. Check error to see why.
       }
     });
+    return deferred.promise;
   }
 
   getCurrentUser() {
@@ -67,6 +73,6 @@ export class User {
   }
 
   logout() {
-    this.User.logOut();
+    this.Parse.User.logOut();
   }
 }

@@ -28,7 +28,7 @@ export class Building {
     let newBuilding = new this.Buildings();
     newBuilding.set('city', buliding.city);
     newBuilding.set('address', buliding.address);
-    newBuilding.set('apartmentsNumber', buliding.apartmentsNumber);
+      newBuilding.set('apartmentsNumber', buliding.apartmentsNumber);
     return newBuilding.save();
   }
 }
