@@ -23,7 +23,6 @@ export class HomeController {
 
   getDashboardData() {
     this.User.getAlUserByBuildingId('9hlOUsQd9K').then((users)=> {
-      console.log(users);
       this.Apartments = users;
     });
   }

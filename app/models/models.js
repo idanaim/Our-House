@@ -1,3 +1,4 @@
+import { Notifications } from './notifications';
 import { BuildingPosts } from './building-posts';
 import { Expenses } from './expenses';
 import { User } from './user';
@@ -8,4 +9,5 @@ export default angular.module('OurHouse.models', [])
   .service('Building', Building)
   .service('User', User)
   .service('Expenses', Expenses)
-  .service('BuildingPosts', BuildingPosts);
+  .service('BuildingPosts', BuildingPosts)
+  .service('Notifications', Notifications);

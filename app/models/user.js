@@ -4,11 +4,7 @@ export class User {
   constructor($state, $q, ParseApi) {
     this.$q    = $q;
     this.Parse = ParseApi.getParse();
-    //this.currentUser = this.Parse.User.current();
-    //if (!this.currentUser) {
-    //  $state.go('login');
-    //}
-    // this.User = this.Parse.User();
+
   }
 
   getAlUserByBuildingId(buildingId) {
@@ -23,56 +19,88 @@ export class User {
         }
         deferred.resolve(userList);
       },
-      error:()=>{
+      error: ()=> {
 
       }
     });
 
-      return deferred.promise;
-  }
-
-  signUp(newUser) {
-    let deferred = this.$q.defer();
-    let user= new this.Parse.User();
-    user.set("username", newUser.email);
-    user.set("password", newUser.password);
-    user.set("email", newUser.email);
-    user.set("admin", newUser.admin);
-    user.set("phone", newUser.phone);
-    user.set("apartmentNumber", newUser.apartmentNumber);
-    user.set("buildingId", newUser.buildingId);
-
-    user.signUp(null, {
-      success: function (user) {
-        deferred.resolve(user);
-      },
-      error: function (user, error) {
-        // Show the error message somewhere and let the user try again.
-        alert("Error: " + error.code + " " + error.message);
-      }
-    });
     return deferred.promise;
   }
 
-  login(userLogin) {
+  getTheBuildingAdmin(buildingId) {
     let deferred = this.$q.defer();
-    console.log("userLogin",userLogin);
-    this.Parse.User.logIn(userLogin.username, userLogin.password, {
-      success: function (user) {
-        deferred.resolve(user);
+    let userList = [];
+    let query    = new this.Parse.Query(this.Parse.User);
+    query.equalTo("buildingId", buildingId);  // find all the women
+    query.equalTo("admin", true);  // find all the women
+    query.find({
+      success: (users)=> {
+        for (var i = 0; i < users.length; i++) {
+          userList.push(users[i]._toFullJSON());
+        }
+        deferred.resolve(userList);
       },
-      error: function (user, error) {
-        // The login failed. Check error to see why.
+      error: ()=> {
+
       }
     });
+
     return deferred.promise;
   }
 
-  getCurrentUser() {
-    return this.currentUser;
-  }
+signUp(newUser)
+{
+  let deferred = this.$q.defer();
+  let user     = new this.Parse.User();
+  user.set("username", newUser.email);
+  user.set("password", newUser.password);
+  user.set("email", newUser.email);
+  user.set("admin", newUser.admin);
+  user.set("name", newUser.name);
+  user.set("lastname", newUser.lastName);
+  user.set("pending", newUser.pending);
+  user.set("phone", newUser.phone);
+  user.set("apartmentNumber", newUser.apartmentNumber);
+  user.set("buildingId", newUser.buildingId);
 
-  logout() {
-    this.Parse.User.logOut();
-  }
+  user.signUp(null, {
+    success: function (user) {
+      deferred.resolve(user._toFullJSON());
+    },
+    error: function (user, error) {
+      // Show the error message somewhere and let the user try again.
+      alert("Error: " + error.code + " " + error.message);
+    }
+  });
+  return deferred.promise;
+}
+
+login(userLogin)
+{
+  let deferred = this.$q.defer();
+  this.Parse.User.logIn(userLogin.username, userLogin.password, {
+    success: ((user)=> {
+      if (user._toFullJSON().pending || !user._toFullJSON().approved) {
+        this.logout();
+        deferred.resolve({ pending: true });
+        alert('מחכה לאישור');
+      }
+      deferred.resolve(user);
+    }),
+    error: ((user, error)=> {
+      // The login failed. Check error to see why.
+    })
+  });
+  return deferred.promise;
+}
+
+getCurrentUser()
+{
+  return this.currentUser;
+}
+
+logout()
+{
+  this.Parse.User.logOut();
+}
 }

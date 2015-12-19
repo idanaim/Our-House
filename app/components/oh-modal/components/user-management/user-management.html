@@ -40,9 +40,9 @@
           <input type="password" ng-model="sendRequest.password"
                  placeholder="סיסמא"/>
           <input type="text" ng-model="sendRequest.name" placeholder="שם"/>
-          <input type="tel" ng-model="sendRequest.phone" placeholder="טלפון"/>
           <input type="text" ng-model="sendRequest.lastName"
                  placeholder="משפחה"/>
+          <input type="tel" ng-model="sendRequest.phone" placeholder="טלפון"/>
           <input type="number" ng-model="sendRequest.apartmentNumber"
                  placeholder="מס' דירה"/>
           <input type="text" ng-model="sendRequest.address"
@@ -55,12 +55,29 @@
       </form>
       <form class="animate-hide" ng-hide="!UserManagement.newBuliding">
         <div class="padding-top-20">
-          <input type="email" ng-model="newUser.email" placeholder="מייל"/>
-          <input type="password" ng-model="newUser.password" placeholder="סיסמא"/>
-          <input type="text" ng-model="newUser.address" placeholder="כתובת"/>
-          <input type="text" ng-model="newUser.city" placeholder="עיר"/>
-          <input type="number" ng-model="newUser.apartmentNumber" placeholder="מס' דירה"/>
-          <input type="number" ng-model="newUser.apartmentsNumber" placeholder="מס' דירות סה''כ"/>
+          <input type="email"
+                 ng-model="newUser.email"
+                 placeholder="מייל"/>
+          <input type="text"
+                 ng-model="newUser.name"
+                 placeholder="שם"/>
+          <input type="text"
+                 ng-model="newUser.lastName"
+                 placeholder="משפחה"/>
+          <input type="password"
+                 ng-model="newUser.password"
+                 placeholder="סיסמא"/>
+          <input type="text"
+                 ng-model="newUser.address"
+                 placeholder="כתובת"/>
+          <input type="text"
+                 ng-model="newUser.city"
+                 placeholder="עיר"/>
+          <input type="number"
+                 ng-model="newUser.apartmentNumber"
+                 placeholder="מס' דירה"/>
+          <input type="number" ng-model="newUser.apartmentsNumber"
+                 placeholder="מס' דירות סה''כ"/>
           <input type="tel" ng-model="newUser.phone" placeholder="טלפון"/>
           <button ng-click="UserManagement.createNewBuilding(newUser)">הרשמה
           </button>

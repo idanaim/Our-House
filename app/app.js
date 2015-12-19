@@ -16,6 +16,7 @@ import States     from 'states/states';
 
 //vendors
 import 'jquery';
+import 'angular-sanitize';
 import 'angular';
 import 'lodash';
 import 'angular-chart.js';
@@ -46,7 +47,8 @@ angular.module('OurHouse', [
   'ui.bootstrap',
   'ngAnimate',
   'ngParse',
-  'angular-carousel'
+  'angular-carousel',
+  'ngSanitize',
 
 ]);
 

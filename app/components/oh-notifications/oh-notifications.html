@@ -1,0 +1,17 @@
+<div class="dropdown"  uib-dropdown uib-keyboard-nav>
+  <a class="dropdown-toggle notifications-bell" data-toggle="dropdown" uib-dropdown-toggle><i
+    class="fa fa-bell fa-2x"></i> <b class="badge bounceIn animated badge-location" ng-show="!!ohNotifications.badgeIcon">
+    {{ ohNotifications.badgeIcon }}
+  </b></a>
+  <ul class="uib-dropdown-menu  alert-dropdown">
+    <li ng-repeat="notification in ohNotifications.myNotifications"
+      ng-class="{newNote: !notification.note.readByUser}">
+      <a href="#" ng-click="ohNotifications.markAsRead(notification.parseNote)" ng-bind-html="notification.note.description">
+        <span class="label label-default">Alert Badge</span></a>
+    </li>
+    <li class="divider"></li>
+    <li>
+      <a href="#">View All</a>
+    </li>
+  </ul>
+</div>

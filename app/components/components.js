@@ -1,4 +1,5 @@
-import { trHeader } from './tr-header/tr-header';
+import { ohNotifications } from './oh-notifications/oh-notifications';
+import { ohHeader } from './oh-header/oh-header';
 import  ohModal  from './oh-modal/oh-modal';
 import { sidebar } from './sidebar/sidebar';
 import { headerNotification } from './header-notification/header-notification';
@@ -15,4 +16,5 @@ export default angular.module('OurHouse.components', [
   .directive('headerNotification', headerNotification)
   .directive('sidebar', sidebar)
   .directive('ohModal', ohModal)
-  .directive('trHeader', trHeader);
+  .directive('ohHeader', ohHeader)
+  .directive('ohNotifications', ohNotifications);

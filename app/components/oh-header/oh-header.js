@@ -1,9 +1,10 @@
-class trHeaderController {
+class ohHeaderController {
   // @ngInject
-  constructor($state, Modal, ParseApi) {
+  constructor($state, $scope, Modal, ParseApi) {
     this.Parse  = ParseApi.getParse();
     this.Modal  = Modal;
     this.$state = $state;
+    this.$scope = $scope;
     this.getUser();
   }
 
@@ -35,15 +36,16 @@ class trHeaderController {
     this.Parse.User.logOut();
     this.$state.go('home');
     this.getUser();
+    this.$scope.$broadcast('logout', true);
   }
 }
-export function trHeader() {
+export function ohHeader() {
   return {
     restrict: 'E',
     scope: {},
-    templateUrl: '/components/tr-header/tr-header.html',
-    controller: trHeaderController,
-    controllerAs: 'trHeader',
+    templateUrl: '/components/oh-header/oh-header.html',
+    controller: ohHeaderController,
+    controllerAs: 'ohHeader',
     bindToController: true
   };
 }

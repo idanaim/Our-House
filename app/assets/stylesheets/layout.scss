@@ -296,8 +296,27 @@ small.text-muted {
   width: 100%;
   padding-right: 260px
 }
+
 @media screen and (max-width: 480px) {
   .navbar-static-top {
-    padding-right:0;
+    padding-right: 0;
   }
+}
+
+//notifications//
+.notifications-bell,
+.notifications-bell:hover {
+  color: #fff;
+}
+
+.badge-location {
+  position: relative;
+  left: -22px;
+  top: -10px;
+  background-color: #b94b29;
+  color: #fff;
+}
+
+.newNote {
+  background: beige;
 }

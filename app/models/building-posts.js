@@ -14,7 +14,6 @@ export class BuildingPosts {
     query.equalTo("buildingId", buildingId);  // find all the women
     query.find({
       success: (posts)=> {
-        console.log(posts);
         for (var i = 0; i < posts.length; i++) {
           postList.push(posts[i]._toFullJSON());
         }

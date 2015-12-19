@@ -16,11 +16,10 @@ function config($compileProvider, $httpProvider, $locationProvider, $logProvider
   }
 
   // Combine close $http calls together and run $digest once
-  $httpProvider.useApplyAsync(true);
+  //$httpProvider.useApplyAsync(true);
 
   // Allows to access application URLs without the # sign
   $locationProvider.html5Mode(true);
- // ParseProvider.initialize("ttSTSJSt7uAF1SWXqpvAMpzSyZb1zf2SNodmsOBO", "edqqAIN5cVnO67bkKBtL33RMUiEoUnGBHitEJWT6");
 }
 
 export default angular.module('OurHouse.config', [])
