@@ -1,13 +1,36 @@
-<div class="dropdown"  uib-dropdown uib-keyboard-nav>
-  <a class="dropdown-toggle notifications-bell" data-toggle="dropdown" uib-dropdown-toggle><i
-    class="fa fa-bell fa-2x"></i> <b class="badge bounceIn animated badge-location" ng-show="!!ohNotifications.badgeIcon">
+<div class="dropdown" uib-dropdown uib-keyboard-nav>
+  <a class="dropdown-toggle notifications-bell" data-toggle="dropdown"
+     uib-dropdown-toggle><i
+    class="fa fa-bell fa-2x"></i> <b
+    class="badge bounceIn animated badge-location"
+    ng-show="!!ohNotifications.badgeIcon">
     {{ ohNotifications.badgeIcon }}
   </b></a>
-  <ul class="uib-dropdown-menu  alert-dropdown">
+  <ul class="uib-dropdown-menu  alert-dropdown"
+      style="color:black;width: 320px;font-size: 12px;text-align: right">
     <li ng-repeat="notification in ohNotifications.myNotifications"
-      ng-class="{newNote: !notification.note.readByUser}">
-      <a href="#" ng-click="ohNotifications.markAsRead(notification.parseNote)" ng-bind-html="notification.note.description">
-        <span class="label label-default">Alert Badge</span></a>
+     >
+
+      <div ng-if="ohNotifications.NOTE_TYPE.REQUEST==notification.note.type"
+           ng-class="{newNote: !notification.note.readByUser}"
+           ng-click="ohNotifications.markAsRead(notification.parseNote)"
+           class="col-lg-12">
+        <div class="btn-group col-lg-5">
+          <button ng-click="ohNotifications.approveUserRequest(notification) "class="btn btn-sm btn-success">אשר</button>
+          <button class="btn btn-sm btn-default">דחה</button>
+        </div>
+        <div class="col-lg-7">
+          <div class="bold"
+            style="font-size: 15px;font-weight: bold">{{ notification.note.fromUsername }}-{{ notification.note.fromUserLastName }}</div>
+          <div><span> מדירה </span><span>{{ notification.note.apartmentNumber }}</span>
+          <span>רוצה להצטרף </span>
+          </div>
+        </div>
+      </div>
+      <div ng-if="ohNotifications.NOTE_TYPE.MESSAGE==notification.note.type">
+        ...
+      </div>
+
     </li>
     <li class="divider"></li>
     <li>

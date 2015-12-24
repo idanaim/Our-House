@@ -14,6 +14,8 @@ export class Notifications {
     notification.set("toUserId", request.toUserId);
     notification.set("isRequest", true);
     notification.set("readByUser", false);
+    notification.set("type", request.type);
+    notification.set("apartmentNumber", request.apartmentNumber);
     return notification.save();
   }
   getNotifications(userId){

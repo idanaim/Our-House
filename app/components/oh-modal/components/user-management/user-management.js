@@ -22,6 +22,7 @@ export class UserManagementController {
   }
 
   sendRequestFromAdmin(request) {
+    debugger;
     this.Building.getBuildingByAddress({
       address: request.address,
       city: request.city
@@ -29,21 +30,22 @@ export class UserManagementController {
       request.admin      = false;
       request.pending    = true;
       request.approved   = false;
+      request.type   = 1;
       request.buildingId = building.objectId;
       this.User.signUp(request).then((user)=> {
         this.User.getTheBuildingAdmin(building.objectId).then((admins)=> {
+          console.log(JSON.stringify(request));
           this.Notifications.setNotificationRequest({
             "fromUserId": user.objectId,
             "fromUsername": user.name,
             "fromUserLastName": user.lastname,
             "toUserId": admins[0].objectId,
-            "apartmentNumber":user.apartmentNumber
+            "type":1,
+            "apartmentNumber":request.apartmentNumber
           }).then(()=>  this.$uibModalInstance.close());
         })
-
       });
     })
-
   }
 
   createNewBuilding(newUser) {
@@ -56,17 +58,16 @@ export class UserManagementController {
       console.log(data);
       newUser.buildingId = data.id;
       newUser.admin      = true;
-      newUser.pending    = false;
-      request.approved   = true;
+      newUser.approved   = true;
       this.User.signUp(newUser).then((user)=> {
-
+        this.$uibModalInstance.close(user)
       });
     })
   }
 
   login(user) {
     this.User.login(user).then((data)=> {
-      console.log(data);
+
       this.$uibModalInstance.close(data)
     })
   }
