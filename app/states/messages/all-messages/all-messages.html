@@ -1,0 +1,15 @@
+<div class="messages">
+<h3 style="text-align:right;">ההודעות שלי <span class="fa fa-inbox fa-2x"></span></h3>
+  <div class="col-lg-12 ">
+    <div class="list-group">
+      <div  class="list-group-item"
+            ng-repeat="message in AllMessages.myMessages track by $index"
+            ng-click="AllMessages.openMessage(message)"
+            ng-class="{'new-message':!message.message.isRead}">
+        <div class="col-xs-2 from-message">{{ message.message.name }} {{ message.lastname }} </div>
+        <div class="col-xs-7 message-title">{{ message.message.title }}</div>
+        <div class="col-xs-3 message-time">{{ message.message.createdAt |date:'medium'}}</div>
+      </div>
+    </div>
+  </div>
+</div>

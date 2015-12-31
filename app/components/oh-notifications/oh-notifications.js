@@ -5,8 +5,9 @@ const NOTE_TYPE = {
 
 class ohNotificationsController {
   // @ngInject
-  constructor($interval, $scope, ParseApi, Notifications, User) {
+  constructor($interval, $state, $scope, ParseApi, Notifications, User) {
     this.badgeIcon     = 0;
+    this.$state        = $state;
     this.Parse         = ParseApi.getParse();
     this.Notifications = Notifications;
     this.User          = User;
@@ -27,6 +28,14 @@ class ohNotificationsController {
 
       }, this.badgeIcon = 0);
     }
+  }
+
+  openMessage(message) {
+    if (!message.note.readByUser) {
+      message.parseNote.set("readByUser", true);
+      message.parseNote.save();
+    }
+    this.$state.go('messages.message', { messageId: message.note.messageId });
   }
 
   countNewNotifications(notes) {

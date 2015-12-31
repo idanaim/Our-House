@@ -35,7 +35,7 @@ export class UserManagementController {
       this.User.signUp(request).then((user)=> {
         this.User.getTheBuildingAdmin(building.objectId).then((admins)=> {
           console.log(JSON.stringify(request));
-          this.Notifications.setNotificationRequest({
+          this.Notifications.setNotification({
             "fromUserId": user.objectId,
             "fromUsername": user.name,
             "fromUserLastName": user.lastname,

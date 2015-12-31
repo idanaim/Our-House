@@ -78,8 +78,8 @@ export class User {
 
   getUseApprovalById(id) {
     let deferred = this.$q.defer();
-    var query = new this.Parse.Query(this.UserApproved);
-    query.equalTo("userId",id);
+    var query    = new this.Parse.Query(this.UserApproved);
+    query.equalTo("userId", id);
     query.find({
       success: (users)=> {
 
@@ -106,7 +106,7 @@ export class User {
           else {
             deferred.resolve(user);
           }
-        })
+        });
       }),
       error: ((user, error)=> {
         // The login failed. Check error to see why.
@@ -135,7 +135,6 @@ export class User {
     let deferred = this.$q.defer();
     let query    = new this.Parse.Query(this.UserApproved);
     query.equalTo("userId", id);  // find all the women
-    // query.equalTo("admin", true);  // find all the women
     query.find({
       success: (users)=> {
         deferred.resolve(users[0]._toFullJSON());
@@ -143,6 +142,23 @@ export class User {
       },
       error: ()=> {
 
+      }
+    });
+    return deferred.promise;
+  }
+
+  getAdminByBuildingId(buildingId) {
+    let deferred = this.$q.defer();
+    var query    = new this.Parse.Query(this.Parse.User);
+    query.equalTo("buildingId", buildingId);
+    query.equalTo("admin", true);
+    query.first({
+      success: (user)=> {
+        deferred.resolve(user._toFullJSON());
+
+      },
+      error: (error)=> {
+        alert("Error: " + error.code + " " + error.message);
       }
     });
     return deferred.promise;

@@ -6,8 +6,9 @@ export class Notifications {
     this.Parse     = ParseApi.getParse();
     this.Notifications = this.Parse.Object.extend('Notifications');
   }
-  setNotificationRequest(request){
+  setNotification(request){
     let notification =new this.Notifications();
+    notification.set("messageId", request.messageId);
     notification.set("fromUserId", request.fromUserId);
     notification.set("fromUsername", request.fromUsername);
     notification.set("fromUserLastName", request.fromUserLastName);
@@ -37,6 +38,9 @@ export class Notifications {
       }
     });
     return deferred.promise;
+
+  }
+  deleteNotifictionsByMessageId(messageId){
 
   }
 }

@@ -27,14 +27,24 @@
           </div>
         </div>
       </div>
-      <div ng-if="ohNotifications.NOTE_TYPE.MESSAGE==notification.note.type">
-        ...
-      </div>
-
+      <div ng-if="ohNotifications.NOTE_TYPE.MESSAGE==notification.note.type"
+             ng-class="{newNote: !notification.note.readByUser}"
+             ng-click="ohNotifications.openMessage(notification)"
+             class="col-lg-12">
+          <div class="btn-group col-lg-5">
+          </div>
+          <div class="col-lg-7">
+            <div class="bold"
+                 style="font-size: 15px;font-weight: bold">{{ notification.note.fromUsername }}-{{ notification.note.fromUserLastName }}</div>
+            <div><span> מדירה </span><span>{{ notification.note.apartmentNumber }}</span>
+              <span>שלח לך הודעה </span>
+            </div>
+          </div>
+        </div>
     </li>
     <li class="divider"></li>
     <li>
-      <a href="#">View All</a>
+      <a href="#" ui-sref="messages.all-messages">View All</a>
     </li>
   </ul>
 </div>

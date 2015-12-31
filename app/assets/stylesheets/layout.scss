@@ -320,3 +320,13 @@ small.text-muted {
 .newNote {
   background: beige;
 }
+.send-message,
+.admin-post{
+  width:540px;
+  .modal-content{
+    text-align: right;
+    padding: 6px;
+    border-radius: 0;
+    width:540px!important;
+  }
+}

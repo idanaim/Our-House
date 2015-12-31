@@ -1,0 +1,67 @@
+<div class="send-message">
+  <div class="modal-header clearfix">
+    <span class="pull-left" ng-click="$close()"><i
+      class="fa fa-times"></i></span>
+    <h4 class="modal-title" style="text-align: right"><i
+      class="fa fa-pencil-square-o fa-2x"></i> <span>שליחת הודעה</span>
+    </h4>
+  </div>
+  <div class="modal-content clearfix">
+    <form name="sendMessageForm"
+          class="clearfix"
+          ng-submit="">
+
+      <div>
+        <div class="row clearfix well">
+          <div class="col-xs-6">
+            <select name="singleSelect" id="type"
+                    ng-model="SendMessage.message.toSend">
+              <option value="">שליחה לועד הבית</option>
+              <!-- not selected / blank option -->
+              <option
+                ng-repeat="aprtment in SendMessage.Apartments track by $index"
+                value="{{ aprtment.objectId }}">
+                <span>{{ aprtment.apartmentNumber }}.</span>
+                <span> {{ aprtment.lastname }}</span>
+              </option>
+            </select>
+          </div>
+          <div class="col-xs-6">
+            <select name="singleSelect" id="singleSelect"
+                    ng-model="SendMessage.message.type">
+              <option value="">בחר סוג הודעה</option>
+              <!-- not selected / blank option -->
+              <option value="1">תלונה</option>
+              <!-- interpolation -->
+              <option value="2">הודעה רגילה לועד הבית</option>
+              <option value="3">אחר</option>
+            </select>
+          </div>
+        </div>
+        <div class="row">
+          <div class="form-group"
+               style="    width: 98%;">
+            <label for="title" class="control-label">הכנס כותרת</label>
+            <input type="text" class="form-control" name="title" id="title"
+                   ng-model="SendMessage.message.title" required/>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="form-group"
+             style="    width: 98%;">
+          <label class="control-label">תוכן</label>
+            <textarea class="form-control" rows="3"
+                      ng-model="SendMessage.message.content"></textarea>
+        </div>
+      </div>
+      <div class="footer">
+        <div class="btn-group">
+          <button class="btn btn-success" ng-click="SendMessage.send()">שלח
+          </button>
+        </div>
+      </div>
+  </div>
+  </form>
+</div>
+</div>

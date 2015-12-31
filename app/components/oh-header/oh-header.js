@@ -20,6 +20,10 @@ class ohHeaderController {
     });
   }
 
+  sendMessage() {
+    this.Modal.open('SendMessage');
+  }
+
   getUser() {
     let userObj = this.Parse.User.current();
     if (!userObj) {

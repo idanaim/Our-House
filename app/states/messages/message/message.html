@@ -1,0 +1,41 @@
+<div class="single-message">
+
+  <div class="row">
+    <div class="col-lg-3">
+      <div class="row actions">
+        <div class="action-box"
+          ng-click="Message.replay()"><i class="fa fa-reply"></i></div>
+        <div class="action-box"
+          ng-click="Message.deleteMessage()">X</div>
+
+      </div>
+    </div>
+    <h3 class="col-xs-9">{{ Message.currentMessage.message.title }}</h3>
+  </div>
+  <div class="message-content"
+       ng-bind-html="Message.currentMessage.message.content | breakfilter"></div>
+
+  <div class="replay-message"
+    ng-if="Message.showReply">
+    <div class="form-group">
+      <label for="title" class="control-label">הכנס כותרת</label>
+      <input type="text" class="form-control" name="title" id="title"
+             ng-model="Message.replyMessage.title" required/>
+    </div>
+
+
+    <div class="row">
+      <div class="form-group">
+        <label class="control-label">תוכן</label>
+            <textarea class="form-control" rows="3"
+                      ng-model="Message.replyMessage.content"></textarea>
+      </div>
+    </div>
+    <div class="btn-group">
+      <button class="btn btn-success" ng-click="Message.send()">שלח
+      </button>
+    </div>
+
+
+  </div>
+</div>

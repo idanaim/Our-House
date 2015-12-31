@@ -105,6 +105,8 @@ const config = {
         loader: 'url?limit=10000&minetype=application/font-woff'
       },
 
+
+
       // Create AngularJS templates from HTMLs
       {
         test: /\.html$/,
@@ -113,10 +115,6 @@ const config = {
           'html'
         ]
       },
-      //{
-      //  test: require.resolve('jquery/dist/jquery'),
-      //  loader: 'expose?jQuery'
-      //},
     ]
   },
 
