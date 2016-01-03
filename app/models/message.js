@@ -47,7 +47,7 @@ export class Message {
 
       },
       error: (error)=> {
-        alert("Error: " + error.code + " " + error.message);
+      //  alert("Error: " + error.code + " " + error.message);
       }
     });
     return deferred.promise;

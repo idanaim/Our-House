@@ -42,7 +42,9 @@ export class MessagesMessageController {
   }
 
   deleteMessage() {
+    this.Notifications.deleteNotifictionsByMessageId(this.currentMessage.message.objectId);
     this.currentMessage.parseMessage.destroy();
+
     this.$state.go('messages.all-messages');
   }
 
