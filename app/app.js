@@ -12,13 +12,16 @@ import Filters    from 'filters/filters';
 import Config     from 'config/config';
 import Routes     from 'config/routes/routes';
 import States     from 'states/states';
+import Constants     from 'constants/constants';
 
 
 //vendors
-import 'jquery';
 import 'angular-sanitize';
 import 'angular';
+import 'jquery';
 import 'lodash';
+import 'bootstrap/dist/css/bootstrap.css';
+import 'bootstrap'
 import 'angular-chart.js';
 import 'angular-animate';
 import 'angular-chart.js/dist/angular-chart.css';
@@ -43,6 +46,7 @@ angular.module('OurHouse', [
   Config.name,
   Routes.name,
   States.name,
+  Constants.name,
   'chart.js',
   'ui.bootstrap',
   'ngAnimate',

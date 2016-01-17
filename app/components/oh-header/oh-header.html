@@ -7,7 +7,7 @@
       <span class="icon-bar"></span>
       <span class="icon-bar"></span>
     </button>
-    <a href="/" class="navbar-brand logo">b</a>
+    <!--<a href="/" class="navbar-brand logo">b</a>-->
   </div>
   <nav class="collapse navbar-collapse" role="navigation">
     <form class="navbar-form navbar-left">
@@ -35,17 +35,19 @@
       </li>
 
     </ul>
-    <ul class="nav navbar-nav navbar-right">
+
+    <ul class="nav navbar-nav pull-right">
       <li style="padding-top: 10px">
         <oh-notifications></oh-notifications>
       </li>
-      <li><a ng-click="ohHeader.userManagement()" ng-if="!ohHeader.currentUser"><i
+      <li  ng-if="!ohHeader.currentUser"><a ng-click="ohHeader.userManagement()"><i
         class="fa fa-sign-in"></i> היכנס\הירשם</a></li>
-      <li><a ng-click="ohHeader.userManagement()" ng-if="ohHeader.currentUser">
+      <li  ng-if="ohHeader.currentUser"><a ng-click="ohHeader.userManagement()">
         {{ ohHeader.currentUser.email }} , ברוך הבא </a></li>
 
-      <li class="dropdown" uib-dropdown uib-keyboard-nav>
-        <a ng-click="ohHeader.logout()" ng-if="ohHeader.currentUser">התנתק <i
+      <li class="dropdown" uib-dropdown uib-keyboard-nav
+          ng-if="ohHeader.currentUser">
+        <a ng-click="ohHeader.logout()">התנתק <i
           class="fa fa-sign-out"></i></a>
         <!-- /.dropdown-user -->
       </li>

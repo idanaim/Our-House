@@ -292,16 +292,16 @@ small.text-muted {
   }
 }
 
-.navbar-static-top {
-  width: 100%;
-  padding-right: 260px
-}
-
-@media screen and (max-width: 480px) {
-  .navbar-static-top {
-    padding-right: 0;
-  }
-}
+//.navbar-static-top {
+//  width: 100%;
+//  padding-right: 260px
+//}
+//
+//@media screen and (max-width: 480px) {
+//  .navbar-right-static-top {
+//    padding-right: 0;
+//  }
+//}
 
 //notifications//
 .notifications-bell,
@@ -328,5 +328,10 @@ small.text-muted {
     padding: 6px;
     border-radius: 0;
     width:540px!important;
+  }
+}
+#sidebar {
+  li{
+    padding-left: 10px!important;
   }
 }

@@ -12,7 +12,10 @@ export class Building {
 
     let query = new this.Parse.Query(this.Buildings);
     query.get(id).then((building)=> {
-      deferred.resolve(building._toFullJSON());
+      deferred.resolve({
+        building: building._toFullJSON(),
+        parseBuilding: building
+      });
     });
 
     return deferred.promise;

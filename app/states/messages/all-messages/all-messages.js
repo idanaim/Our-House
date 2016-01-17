@@ -4,7 +4,7 @@ export class MessagesAllMessagesController {
   constructor($state,Message, ParseApi) {
     this.Message     = Message;
     this.Parse       = ParseApi.getParse();
-    this.currentUser = this.Parse.User.current()._toFullJSON();
+    this.currentUser       = User.getCurrentUser();
     this.$state=$state;
     this.getMyMessages()
   }

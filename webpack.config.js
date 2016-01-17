@@ -1,4 +1,3 @@
-'use strict';
 /* global __dirname, process */
 
 const webpack           = require('webpack');
@@ -12,10 +11,11 @@ const exclude           = /node_modules/;
 
 function getENVReplacements() {
   const replacements = environmentsFile[process.env.NODE_ENV];
-  let result         = {};
+  const result       = {};
 
+  /* eslint-disable angular/json-functions */
   Object.keys(replacements)
-    .forEach((key) => result[key] = JSON.stringify(replacements[key]));
+    .forEach(function(key) { result[key] = JSON.stringify(replacements[key]) });
 
   return result;
 }
@@ -26,7 +26,7 @@ const config = {
   context: path.join(__dirname, '/app'),
   entry: {
     app: 'app.js',
-    vendor: ['jquery','angular', 'angular-ui-router'],
+    vendor: ['angular', 'angular-ui-router'],
   },
 
   output: {
@@ -97,15 +97,9 @@ const config = {
         loader: 'file'
       },
       {
-        test: /\.(png)$/,
-        loader: 'url?mimetype=image/png'
-      },
-      {
         test: /\.woff(2)?(\?.*$|$)$/,
         loader: 'url?limit=10000&minetype=application/font-woff'
       },
-
-
 
       // Create AngularJS templates from HTMLs
       {
@@ -114,6 +108,10 @@ const config = {
           'ngtemplate?relativeTo=' + path.join(__dirname, '/app'),
           'html'
         ]
+      },
+      {
+        test: require.resolve('jquery'),
+        loader: 'expose?$!expose?jQuery'
       },
     ]
   },

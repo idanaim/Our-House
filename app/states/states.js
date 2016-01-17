@@ -1,3 +1,4 @@
+import { RegistrationBuildingController } from './registration-building/registration-building';
 import { MessagesAllMessagesController } from './messages/all-messages/all-messages';
 import { MessagesMessageController } from './messages/message/message';
 import { MessagesController } from './messages/messages';
@@ -12,4 +13,5 @@ export default angular.module('OurHouse.controllers', [])
   .controller('ProfessionalController', ProfessionalController)
   .controller('MessagesController', MessagesController)
   .controller('MessagesMessageController', MessagesMessageController)
-  .controller('MessagesAllMessagesController', MessagesAllMessagesController);
+  .controller('MessagesAllMessagesController', MessagesAllMessagesController)
+  .controller('RegistrationBuildingController', RegistrationBuildingController);

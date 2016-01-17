@@ -103,7 +103,8 @@ body {
     font-weight: 400;
     line-height: 1;
   }
-  input {
+  input,
+  textarea{
     outline: none;
     display: block;
     width: 100%;

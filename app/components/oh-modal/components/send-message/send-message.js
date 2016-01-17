@@ -10,7 +10,7 @@ export class SendMessageController {
     this.Parse         = ParseApi.getParse();
     this.message       = {};
     this.modalInstance = $uibModalInstance;
-    this.currentUser   = this.Parse.User.current()._toFullJSON();
+    this.currentUser       = User.getCurrentUser();
     this.getAllRelevantUsers()
   }
 
@@ -33,9 +33,9 @@ export class SendMessageController {
   }
 
   send() {
-    var currentUser = this.Parse.User.current()._toFullJSON();
+
     if (!this.message.toSend) {
-      this.User.getAdminByBuildingId(currentUser.buildingId).then((user)=> {
+      this.User.getAdminByBuildingId(this.currentUser.buildingId).then((user)=> {
         this.save(user.objectId)
       });
     }

@@ -28,4 +28,14 @@ export class Expenses {
   getExpenseById(id){
 
   }
+  setExpense(expense){
+    let expenses = new this.Expenses();
+    expenses.set("typeId", expense.typeId);
+    expenses.set("buildingId", expense.buildingId);
+    expenses.set("amount", expense.amount);
+    expenses.set("expenseOn", expense.expenseOn);
+    expenses.set("explain", expense.explain);
+    expenses.set("receipt", expense.receipt);
+    return expenses.save();
+  }
 }

@@ -9,7 +9,7 @@ class ohHeaderController {
   }
 
   openAdminPost() {
-    this.Modal.open('AdminPost')
+    this.Modal.open('AdminPost');
   }
 
   userManagement() {
@@ -32,7 +32,12 @@ class ohHeaderController {
     }
     else {
       this.currentUser = userObj._toFullJSON();
-      this.$state.go('dashboard');
+      if (!this.currentUser.firstTime) {
+        this.$state.go('registration-building');
+      }
+      else {
+        this.$state.go('dashboard');
+      }
     }
   }
 

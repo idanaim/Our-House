@@ -27,7 +27,6 @@ export class MessagesMessageController {
   }
 
   sendNotification(messageId) {
-    console.log(messageId);
     let notification = {
       "messageId": messageId,
       "fromUserId": this.currentUser.objectId,

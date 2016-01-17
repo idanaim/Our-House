@@ -1,0 +1,49 @@
+<!-- Form Module-->
+<div class="report-expense"
+     style="direction: rtl">
+  <div class="modal-content">
+    <div class="module form-module">
+      <div class="">
+        <h3>דיווח הוצאות</h3>
+
+      </div>
+      <form class="animate-hide">
+        <div class="padding-top-20">
+
+          <select name="singleSelect" id="type"
+                  ng-model="report.typeId">
+            <option value="">שליחה לועד הבית</option>
+            <!-- not selected / blank option -->
+            <option
+              ng-repeat="professional in ReportExpense.professionals track by $index"
+              value="{{ professional.typeId }}">
+              <div>{{ professional.description }}</div>
+            </option>
+            <option value="other">אחר</option>
+          </select>
+          <input type="text" ng-model="report.expenseOn"
+                 ng-if="report.typeId=='other'"
+                 placeholder="סוג הוצאה "/>
+          <input type="number" ng-model="report.amount"
+                 placeholder="סכום"/>
+              <textarea class="" type="text" ng-model="report.explain"
+                        placeholder="הסבר" rows="5">
+                </textarea>
+
+          <label class="control-label">צרף חשבונית (במידה ויש)</label>
+          <input id="input-4" name="input4[]" type="file" multiple
+                 class="file-loading"
+            ng-model="report.receipt">
+          <script>
+            $(document).on('ready', function () {
+              $("#input-4").fileinput({ showCaption: false });
+            });
+          </script>
+          <button ng-click="ReportExpense.sendReport(report)">
+            שלח בקשה
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

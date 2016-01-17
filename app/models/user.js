@@ -4,6 +4,7 @@ export class User {
   constructor($state, $q, ParseApi) {
     this.$q           = $q;
     this.Parse        = ParseApi.getParse();
+    this.currentUser  = ''; 
     this.UserApproved = this.Parse.Object.extend('UserApproved');
 
   }
@@ -116,7 +117,14 @@ export class User {
   }
 
   getCurrentUser() {
+    if (this.Parse.User.current()) {
+      this.currentUser = this.Parse.User.current()._toFullJSON();
+    }
     return this.currentUser;
+  }
+  getCurrentParseUser() {
+
+    return this.Parse.User.current();
   }
 
   logout() {
@@ -135,9 +143,9 @@ export class User {
     let deferred = this.$q.defer();
     let query    = new this.Parse.Query(this.UserApproved);
     query.equalTo("userId", id);  // find all the women
-    query.find({
-      success: (users)=> {
-        deferred.resolve(users[0]._toFullJSON());
+    query.first({
+      success: (user)=> {
+        deferred.resolve(user._toFullJSON());
 
       },
       error: ()=> {

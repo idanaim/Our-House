@@ -1,14 +1,19 @@
 export class DashboardController {
 
   // @ngInject
-  constructor(ParseApi, Building, User, Expenses, BuildingPosts,Modal) {
+  constructor($q, MonthPaid, Building, CALENDER_ENG, User, Expenses, BuildingPosts, Modal) {
     this.BuildingPosts = BuildingPosts;
+    this.CALENDER_ENG  = CALENDER_ENG;
     this.Expenses      = Expenses;
+    this.MonthPaid     = MonthPaid;
     this.User          = User;
+    this.$q            = $q;
     this.Building      = Building;
     this.Apartments    = [];
     this.total         = 0;
-    this.Modal= Modal;
+    this.Modal         = Modal;
+    this.currentUser   = User.getCurrentUser();
+    this.buildingId    = this.currentUser.buildingId;
     this.getDashboardData();
 
     this.barChart = {
@@ -22,22 +27,47 @@ export class DashboardController {
     }
   }
 
-
   getDashboardData() {
-    this.BuildingPosts.getAllPostByBuildingId('9hlOUsQd9K').then((posts)=> {
+    this.BuildingPosts.getAllPostByBuildingId(this.buildingId).then((posts)=> {
       this.buildingPosts = posts;
     });
-    this.User.getAlUserByBuildingId('9hlOUsQd9K').then((users)=> {
+    this.User.getAlUserByBuildingId(this.buildingId).then((users)=> {
       this.Apartments = users;
     });
-    this.Building.getBuildingById('9hlOUsQd9K').then((building)=> {
-      this.currentBuilding = building;
-      this.Expenses.getAllExpensesByBuildingId('9hlOUsQd9K').then((Expenses)=> {
-        this.buildingExpenses = Expenses;
-        this.calculateExpanses();
-        this.createPieData();
+
+    this.Building.getBuildingById(this.buildingId).then((building)=> {
+      this.currentBuilding = building.building;
+      this.getTotalBuildingAmount().then(()=> {
+        this.Expenses.getAllExpensesByBuildingId(this.buildingId).then((Expenses)=> {
+          this.buildingExpenses = Expenses;
+          this.calculateExpanses();
+          this.createPieData();
+        });
       });
     });
+  }
+
+  getTotalBuildingAmount() {
+    let deferred        = this.$q.defer();
+    let jackpot         = this.currentBuilding.jackpot;
+    this.totalMoneyPaid = 0;
+    let calenderKeys    = _.keys(this.CALENDER_ENG);
+    this.MonthPaid.getAllPaymentByBuildingId(this.buildingId)
+      .then((apartmentsMap)=> {
+        let mapKeys = _.keys(apartmentsMap);
+        _.forEach(mapKeys, (key)=> {
+          let apartmentMonth = apartmentsMap[key].month;
+          let monthKeys      = _.keys(apartmentMonth);
+          _.forEach(monthKeys, (month)=> {
+            if (apartmentMonth[month] && this.CALENDER_ENG[month]) {
+              this.totalMoneyPaid += jackpot;
+            }
+
+          });
+        });
+      });
+    deferred.resolve(this.totalMoneyPaid);
+    return deferred.promise;
   }
 
   calculateExpanses() {
@@ -45,7 +75,7 @@ export class DashboardController {
     this.buildingExpenses.forEach((expense)=> {
       allExpenses += expense.amount;
     });
-    this.total      = this.currentBuilding.jackpot - allExpenses;
+    this.total      = this.totalMoneyPaid - allExpenses;
   }
 
   createPieData() {

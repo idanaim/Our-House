@@ -30,7 +30,10 @@
     "angular-ui-bootstrap": "0.14.3",
     "angular-ui-router": "0.2.15",
     "bootstrap": "3.3.6",
+    "bootstrap-fileinput": "4.2.8",
     "bootstrap-sass": "3.3.6",
+    "browser-sync": "2.10.1",
+    "expose-loader": "0.7.1",
     "font-awesome": "4.5.0",
     "jquery": "2.1.4"
   },
@@ -47,6 +50,7 @@
     "html-loader": "0.3.0",
     "html-webpack-plugin": "1.6.1",
     "jquery": "2.1.4",
+    "jquery-ui": "^1.10.5",
     "json-loader": "0.5.3",
     "karma": "0.13.12",
     "karma-chrome-launcher": "0.2.1",

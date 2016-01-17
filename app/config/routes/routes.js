@@ -1,3 +1,4 @@
+import { registrationBuildingRoutes } from './registration-building';
 import { messagesRoutes } from './messages';
 import { professionalRoutes } from './professional';
 import { dashboardRoutes } from './dashboard';
@@ -12,6 +13,7 @@ const defaultRoute = /* @ngInject */ ($urlRouterProvider) => {
 };
 
 export default angular.module('OurHouse.routes', ['ui.router'])
+  .config(registrationBuildingRoutes)
   .config(messagesRoutes)
   .config(professionalRoutes)
   .config(dashboardRoutes)
