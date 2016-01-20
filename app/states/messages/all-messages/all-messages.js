@@ -1,7 +1,7 @@
 export class MessagesAllMessagesController {
 
   // @ngInject
-  constructor($state,Message, ParseApi) {
+  constructor($state,Message, ParseApi,User) {
     this.Message     = Message;
     this.Parse       = ParseApi.getParse();
     this.currentUser       = User.getCurrentUser();

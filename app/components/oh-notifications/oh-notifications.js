@@ -1,6 +1,7 @@
 const NOTE_TYPE = {
   REQUEST: 1,
-  MESSAGE: 2
+  MESSAGE: 2,
+  COMPLAIN:4
 };
 
 class ohNotificationsController {
@@ -15,7 +16,7 @@ class ohNotificationsController {
     this.test          = 1;
     this.checkNotifications();
     $interval(this.checkNotifications.bind(this), 10000);
-    $scope.$on('logout', ()=>this.badgeIcon = 0);
+    $scope.$on('user-status-changed', ()=>this.badgeIcon = 0);
   }
 
   checkNotifications() {

@@ -22,6 +22,8 @@ import 'jquery';
 import 'lodash';
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap'
+import 'material-design-lite';
+import 'material-design-lite/material.css';
 import 'angular-chart.js';
 import 'angular-animate';
 import 'angular-chart.js/dist/angular-chart.css';

@@ -10,7 +10,8 @@
     <!--<a href="/" class="navbar-brand logo">b</a>-->
   </div>
   <nav class="collapse navbar-collapse" role="navigation">
-    <form class="navbar-form navbar-left">
+    <form class="navbar-form navbar-left"
+          ng-if="ohHeader.currentUser">
       <div class="input-group input-group-sm" style="max-width:360px;">
         <input type="text" class="form-control" placeholder="Search"
                name="srch-term" id="srch-term">
@@ -26,28 +27,32 @@
       <li>
         <a href="#"><i class="glyphicon glyphicon-home"></i> Home</a>
       </li>
-      <li>
+      <li ng-if="ohHeader.currentUser.admin">
         <a ng-click="ohHeader.openAdminPost()" role="button"><i
           class="glyphicon glyphicon-plus"></i> הודעה כללית</a>
       </li>
-      <li>
+      <li ng-if="ohHeader.currentUser">
         <a href="#" ng-click="ohHeader.sendMessage()"><span class="badge">שלח הודעה</span></a>
       </li>
 
     </ul>
 
     <ul class="nav navbar-nav pull-right">
-      <li style="padding-top: 10px">
+      <li style="padding-top: 10px"
+          ng-if="ohHeader.currentUser">
         <oh-notifications></oh-notifications>
       </li>
-      <li  ng-if="!ohHeader.currentUser"><a ng-click="ohHeader.userManagement()"><i
+      <li ng-if="!ohHeader.currentUser"
+          ng-click="ohHeader.userManagement()"><a><i
         class="fa fa-sign-in"></i> היכנס\הירשם</a></li>
-      <li  ng-if="ohHeader.currentUser"><a ng-click="ohHeader.userManagement()">
+      <li ng-if="ohHeader.currentUser"
+        ><a>
         {{ ohHeader.currentUser.email }} , ברוך הבא </a></li>
 
       <li class="dropdown" uib-dropdown uib-keyboard-nav
-          ng-if="ohHeader.currentUser">
-        <a ng-click="ohHeader.logout()">התנתק <i
+          ng-if="ohHeader.currentUser"
+          ng-click="ohHeader.logout()">
+        <a>התנתק <i
           class="fa fa-sign-out"></i></a>
         <!-- /.dropdown-user -->
       </li>

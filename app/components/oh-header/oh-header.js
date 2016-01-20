@@ -32,7 +32,7 @@ class ohHeaderController {
     }
     else {
       this.currentUser = userObj._toFullJSON();
-      if (!this.currentUser.firstTime) {
+      if (this.currentUser.firstTime) {
         this.$state.go('registration-building');
       }
       else {
@@ -42,10 +42,12 @@ class ohHeaderController {
   }
 
   logout() {
-    this.Parse.User.logOut();
-    this.$state.go('home');
-    this.getUser();
-    this.$scope.$broadcast('logout', true);
+    this.Parse.User.logOut().then(()=> {
+      this.$scope.$emit('logout', true);
+      this.$state.go('home');
+      this.getUser();
+    });
+
   }
 }
 export function ohHeader() {

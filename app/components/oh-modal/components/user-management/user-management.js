@@ -3,12 +3,13 @@
  */
 export class UserManagementController {
   /*@ngInject*/
-  constructor($uibModalInstance, User, Building, ParseApi, Notifications) {
+  constructor($scope, $uibModalInstance, User, Building, ParseApi, Notifications) {
     this.Parse             = ParseApi.getParse();
     this.Building          = Building;
     this.User              = User;
     this.Notifications     = Notifications;
     this.$uibModalInstance = $uibModalInstance;
+    this.$scope            = $scope;
 
   }
 
@@ -30,7 +31,7 @@ export class UserManagementController {
       request.admin      = false;
       request.pending    = true;
       request.approved   = false;
-      request.type   = 1;
+      request.type       = 1;
       request.buildingId = building.objectId;
       this.User.signUp(request).then((user)=> {
         this.User.getTheBuildingAdmin(building.objectId).then((admins)=> {
@@ -40,8 +41,8 @@ export class UserManagementController {
             "fromUsername": user.name,
             "fromUserLastName": user.lastname,
             "toUserId": admins[0].objectId,
-            "type":1,
-            "apartmentNumber":request.apartmentNumber
+            "type": 1,
+            "apartmentNumber": request.apartmentNumber
           }).then(()=>  this.$uibModalInstance.close());
         })
       });
@@ -67,7 +68,7 @@ export class UserManagementController {
 
   login(user) {
     this.User.login(user).then((data)=> {
-
+      this.$scope.$emit('user-status-changed', true);
       this.$uibModalInstance.close(data)
     })
   }

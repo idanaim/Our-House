@@ -1,5 +1,6 @@
 <!-- sidebar -->
-<div class="column col-sm-2 col-xs-1 sidebar-offcanvas" id="sidebar">
+<div class="column col-sm-2 col-xs-1 sidebar-offcanvas" id="sidebar"
+     ng-show="sidebar.currentUser">
 
   <ul class="nav">
     <li><a href="#" data-toggle="offcanvas" class="visible-xs text-center"><i
@@ -8,8 +9,8 @@
 
   <ul class="nav hidden-xs" id="lg-menu">
     <li class="active"><a href=""><i class="glyphicon glyphicon-briefcase"></i> אנשי מקצוע</a></li>
-    <li><a ui-sref="registration-building"><i class="fa fa-calculator"></i> תשלומי דיירים </a></li>
-    <li><a href="" ng-click="sidebar.reportExpense()"><i class="fa fa-money"></i> דיווח הוצאות </a></li>
+    <li ng-if="sidebar.currentUser.admin"><a ui-sref="registration-building"><i class="fa fa-calculator"></i> תשלומי דיירים </a></li>
+    <li ng-if="sidebar.currentUser.admin"><a href="" ng-click="sidebar.reportExpense()"><i class="fa fa-money"></i> דיווח הוצאות </a></li>
     <li><a href=""><i class="glyphicon glyphicon-paperclip"></i> פורום </a></li>
     <li><a href=""><i class="glyphicon glyphicon-refresh"></i> Refresh </a></li>
   </ul>
@@ -23,7 +24,7 @@
   <!-- tiny only nav-->
   <ul class="nav visible-xs" id="xs-menu">
     <li><a href="" class="text-center"><i class="glyphicon glyphicon-briefcase"></i></a></li>
-    <li><a ui-sref="registration-building"><i class="fa fa-calculator"></i> תשלומי דיירים </a></li>
+    <li><a ui-sref="registration-building"><i class="fa fa-calculator"></i </a></li>
     <li><a href="" ng-click="sidebar.reportExpense()"><i class="fa fa-money"></i></a></li>
     <li><a href="#" class="text-center"><i class="glyphicon glyphicon-paperclip"></i></a></li>
     <li><a href="#" class="text-center"><i class="glyphicon glyphicon-refresh"></i></a></li>

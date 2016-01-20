@@ -41,6 +41,7 @@ export class MessagesMessageController {
   }
 
   deleteMessage() {
+    debugger;
     this.Notifications.deleteNotifictionsByMessageId(this.currentMessage.message.objectId);
     this.currentMessage.parseMessage.destroy();
 

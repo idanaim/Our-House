@@ -1,7 +1,6 @@
 class ohFormController {
   // @ngInject
   constructor($log, $element) {
-    $log.log($element);
   }
 }
 

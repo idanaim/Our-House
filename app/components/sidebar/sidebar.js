@@ -1,7 +1,16 @@
 class sidebarController {
   // @ngInject
-  constructor(Modal) {
+  constructor($rootScope, Modal, User) {
     this.Modal = Modal;
+    this.currentUser = User.getCurrentUser();
+    $rootScope.$on('user-status-changed', ()=> {
+      debugger;
+      this.currentUser = User.getCurrentUser();
+    });
+    $rootScope.$on('logout', ()=> {
+      debugger;
+      this.currentUser = '';
+    });
 
   }
 

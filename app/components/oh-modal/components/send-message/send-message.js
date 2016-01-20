@@ -28,7 +28,8 @@ export class SendMessageController {
       "readByUser": false,
       "type": this.message.type,
       "apartmentNumber": this.currentUser.apartmentNumber
-    }
+    };
+    debugger;
     this.Notifications.setNotification(notification)
   }
 

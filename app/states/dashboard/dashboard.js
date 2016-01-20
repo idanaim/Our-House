@@ -11,6 +11,7 @@ export class DashboardController {
     this.Building      = Building;
     this.Apartments    = [];
     this.total         = 0;
+    this.showList      = false;
     this.Modal         = Modal;
     this.currentUser   = User.getCurrentUser();
     this.buildingId    = this.currentUser.buildingId;
@@ -76,6 +77,10 @@ export class DashboardController {
       allExpenses += expense.amount;
     });
     this.total      = this.totalMoneyPaid - allExpenses;
+  }
+
+  taggleList() {
+    return this.showList =! this.showList;
   }
 
   createPieData() {
