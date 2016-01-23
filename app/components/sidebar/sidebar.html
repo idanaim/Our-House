@@ -1,34 +1,59 @@
-<!-- sidebar -->
-<div class="column col-sm-2 col-xs-1 sidebar-offcanvas" id="sidebar"
-     ng-show="sidebar.currentUser">
+<div class="">
+  <header class="demo-drawer-header">
 
-  <ul class="nav">
-    <li><a href="#" data-toggle="offcanvas" class="visible-xs text-center"><i
-      class="glyphicon glyphicon-chevron-right"></i></a></li>
-  </ul>
+      <img src="../../assets/images/user-avatar.png"
+           class="demo-avatar"
+        ng-if="sidebar.currentUser">
 
-  <ul class="nav hidden-xs" id="lg-menu">
-    <li class="active"><a href=""><i class="glyphicon glyphicon-briefcase"></i> אנשי מקצוע</a></li>
-    <li ng-if="sidebar.currentUser.admin"><a ui-sref="registration-building"><i class="fa fa-calculator"></i> תשלומי דיירים </a></li>
-    <li ng-if="sidebar.currentUser.admin"><a href="" ng-click="sidebar.reportExpense()"><i class="fa fa-money"></i> דיווח הוצאות </a></li>
-    <li><a href=""><i class="glyphicon glyphicon-paperclip"></i> פורום </a></li>
-    <li><a href=""><i class="glyphicon glyphicon-refresh"></i> Refresh </a></li>
-  </ul>
-  <ul class="list-unstyled hidden-xs" id="sidebar-footer">
-    <li>
-      <a href="http://www.bootply.com"><h4><i class="fa fa-building"></i> Our
-        House</h4></a>
-    </li>
-  </ul>
+      <div class="demo-avatar-dropdown">
+        <div class="text-center">
+        <span ng-if="sidebar.currentUser">{{ sidebar.currentUser.email  }}</span>
+        <div  class="text-center" ng-if="!sidebar.currentUser">היכנס</div>
+        </div>
+      <div class="mdl-layout-spacer"></div>
+      <button id="accbtn"
+              class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+        <i class="material-icons"
+           role="presentation"
+           ng-if="sidebar.currentUser"
+          >arrow_drop_down</i>
+        <span class="visuallyhidden">Accounts</span>
+      </button>
+      <ul
+        class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect"
+        for="accbtn">
+        <li class="mdl-menu__item">הגדרות</li>
+        <li class="mdl-menu__item" ng-if="!sidebar.currentUser"
+            ng-click="sidebar.userManagement()"><i class="material-icons">exit_to_app</i>היכנס\התחבר
+        <li class="mdl-menu__item"
+            ng-click="sidebar.logout()">התנתק
+        </li>
+      </ul>
+    </div>
+  </header>
+  <nav class="demo-navigation mdl-navigation mdl-color--blue-grey-800">
+    <a class="mdl-navigation__link" ui-sref="dashboard"><i
+      class="mdl-color-text--blue-grey-400 material-icons" role="presentation">home</i>דף
+      מרכזי</a>
+    <a class="mdl-navigation__link" href="" ui-sref="messages.all-messages"><i
+      class="mdl-color-text--blue-grey-400 material-icons" role="presentation">inbox</i>הודעות</a>
+    <a class="mdl-navigation__link" href=""><i
+      class="mdl-color-text--blue-grey-400 material-icons" role="presentation">
+      &#xEB3F;</i> אנשי מקצוע</a></a>
+    <a class="mdl-navigation__link" ui-sref="registration-building"
+       ng-if="sidebar.currentUser.admin"><i
+      class="mdl-color-text--blue-grey-400 material-icons" role="presentation">business</i>
+      תשלומי דיירים </a></li>
+    <a class="mdl-navigation__link" href=""><i
+      class="mdl-color-text--blue-grey-400 material-icons" role="presentation">forum</i>פורום</a>
+    <a class="mdl-navigation__link" href="" ng-if="sidebar.currentUser.admin"
+      ng-click="sidebar.openAdminPost()"><i
+      class="mdl-color-text--blue-grey-400 material-icons" role="presentation">cast</i>הודעה
+      כללית</a>
 
-  <!-- tiny only nav-->
-  <ul class="nav visible-xs" id="xs-menu">
-    <li><a href="" class="text-center"><i class="glyphicon glyphicon-briefcase"></i></a></li>
-    <li><a ui-sref="registration-building"><i class="fa fa-calculator"></i </a></li>
-    <li><a href="" ng-click="sidebar.reportExpense()"><i class="fa fa-money"></i></a></li>
-    <li><a href="#" class="text-center"><i class="glyphicon glyphicon-paperclip"></i></a></li>
-    <li><a href="#" class="text-center"><i class="glyphicon glyphicon-refresh"></i></a></li>
-  </ul>
-
+    <div class="mdl-layout-spacer"></div>
+    <a class="mdl-navigation__link" href=""><i
+      class="mdl-color-text--blue-grey-400 material-icons" role="presentation">help_outline</i><span
+      class="visuallyhidden">Help</span></a>
+  </nav>
 </div>
-<!-- /sidebar -->

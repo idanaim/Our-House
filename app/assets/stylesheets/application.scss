@@ -1,7 +1,7 @@
-$fa-font-path: "/assets/fonts";
-$icon-font-path: "~bootstrap-sass/assets/fonts/bootstrap/";
-@import "~font-awesome/scss/font-awesome";
-@import "~bootstrap-sass/assets/stylesheets/bootstrap";
+//$fa-font-path: "/assets/fonts";
+//$icon-font-path: "~bootstrap-sass/assets/fonts/bootstrap/";
+//@import "~font-awesome/scss/font-awesome";
+//@import "~bootstrap-sass/assets/stylesheets/bootstrap";
 @import "normalize";
 @import "main";
 @import "layout";
@@ -11,3 +11,4 @@ $icon-font-path: "~bootstrap-sass/assets/fonts/bootstrap/";
 @import "common";
 @import "messages";
 @import "registration-building";
+//@import "material.min.css";

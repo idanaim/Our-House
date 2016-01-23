@@ -1,119 +1,118 @@
 <h3 STYLE="direction: rtl">ברוכים הבאים ל Our Home</h3>
-<div class="row">
-  <div class="col-lg-8">
-    <div class="">
-      <div class="" id="pie-chart">
+<div class="mdl-grid demo-content">
+  <div
+    class="demo-charts mdl-color--white mdl-shadow--2dp mdl-cell mdl-cell--8-col mdl-grid">
+    <div class="mdl-card__supporting-text mdl-color-text--black-50 text-right"
+         id="pie-chart">
+      <h4>סה"כ התפלגות הקופה</h4>
 
-        <div class="panel panel-default">
-          <div class="panel-heading text-right">סה"כ התפלגות הקופה</div>
-          <div class="panel-body">
-            <div class="row">
-
-              <div class="col-lg-12">
-                <canvas id="base" class="chart-base"
-                        chart-type="Dashboard.pie.type"
-                        chart-data="Dashboard.pie.data"
-                        chart-labels="Dashboard.pie.labels" chart-legend="true">
-                </canvas>
-              </div>
-            </div>
-          </div>
-        </div>
+      <div class="col-lg-12">
+        <canvas id="base" class="chart-base"
+                chart-type="Dashboard.pie.type"
+                chart-data="Dashboard.pie.data"
+                chart-labels="Dashboard.pie.labels" chart-legend="true">
+        </canvas>
       </div>
     </div>
-    <div class="row">
-      <div class="text-right">
-        <span class="pull-right">*</span>
-        להשוואה עם שנים קומות
-        <a href=""
-           class="btn-link"
-           ng-click="isCollapsed = !isCollapsed"> לחץ כאן</a>
-
-        <div class="t" uib-collapse="!isCollapsed">
-          <div class="panel panel-default">
-            <div class="panel-heading text-right">ביחס לשנים קודמות</div>
-            <div class="panel-body">
-              <canvas id="bar"
-                      class="chart chart-bar"
-                      chart-data="Dashboard.barChart.data"
-                      chart-legend="true"
-                      chart-labels="Dashboard.barChart.labels"
-                      chart-series="Dashboard.barChart.series">
-              </canvas>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
   </div>
-  <div class="col-xs-12 col-lg-4">
-    <div class="panel panel-default">
-      <div class="panel-heading text-right">מצב הקופה</div>
-      <div class="panel-body">
-        <div class="row">
-          <div class="col-xs-6 text-right"><span>{{ Dashboard.totalMoneyPaid }}</span>
-          </div>
-          <div class="col-xs-6"><span class="pull-right">סכום התחלתי</span>
-          </div>
+  <div
+    class="demo-options mdl-card mdl-shadow--2dp mdl-cell mdl-cell--4-col mdl-cell--3-col-tablet mdl-cell--4-col-desktop">
+    <div class="mdl-card__supporting-text mdl-color-text--black-50 text-right">
+      <h4>מצב הקופה</h4>
 
+      <div class="mdl-grid">
+        <div class="mdl-cell--6-col">
+          <span> {{ Dashboard.totalMoneyPaid }}</span>
         </div>
-        <div class="row">
-          <div class="col-xs-6">
-            <div ng-repeat="expnese in Dashboard.buildingExpenses"
-                 class="text-right">{{ expnese.amount }}
-            </div>
-          </div>
-          <div class=" col-xs-6 text-right">הוצאות</div>
-        </div>
-        <div class="row">
-          <div class="col-xs-6 text-right"><span>{{ Dashboard.total }}</span>
-          </div>
-          <div class="col-xs-6"><span class="pull-right">יתרה</span></div>
+        <div class="mdl-cell--6-col">
+          סכום התחלת
         </div>
       </div>
-    </div>
-    <div class="">
-      <div class="panel panel-default">
-        <div class="panel-heading text-right" ng-click="Dashboard.taggleList()"><span class="caret"></span> רשימת דיירים </div>
-        <div class="panel-body"   uib-collapse="!Dashboard.showList">
+      <div class="mdl-grid">
 
-          <ul class="list-group">
-            <li class="list-group-item"
-                ng-repeat="apartment in Dashboard.Apartments">
-              <span
-                class="apartment-number">{{ apartment.apartmentNumber }} : </span>
-              <span class="apartment-resident">{{ apartment.name }}-{{ apartment.lastname }}</span>
-            </li>
+        <div class="mdl-cell--6-col">
 
+          <div ng-repeat="expnese in Dashboard.buildingExpenses">
+            <span>{{ expnese.amount }}</span>
+          </div>
           </ul>
+        </div>
+        <div class="mdl-cell--6-col">
+          הוצאות
+        </div>
+      </div>
+      <div class="mdl-card__actions mdl-card--border">
+        <div class="mdl-cell--6-col">
+          {{ Dashboard.total }}
+        </div>
+        <div class="mdl-cell--6-col">
+          סה"כ
         </div>
       </div>
     </div>
   </div>
 </div>
+<div class="mdl-grid text-right">
+  <a class="">
+    <span class="pull-right">*</span>
+    להשוואה עם שנים קומות
+    <a href=""
+       class="btn-link"
+       ng-click="isCollapsed = !isCollapsed"> לחץ כאן</a>
+  </a>
+</div>
+<div
+  class="demo-charts mdl-color--white mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-grid"
+  ng-hide="!isCollapsed" uib-collapse="!isCollapsed">
+  <div class="mdl-card__supporting-text mdl-color-text--black-50 text-right">
+    <h4>
+      ביחס לשנים קודמות
+    </h4>
+    <canvas id="bar"
+            class="chart chart-bar"
+            chart-data="Dashboard.barChart.data"
+            chart-legend="true"
+            chart-labels="Dashboard.barChart.labels"
+            chart-series="Dashboard.barChart.series">
+    </canvas>
+  </div>
+</div>
+<div class="mdl-grid">
+  <div class="mdl-color--white mdl-shadow--2dp mdl-cell mdl-cell--8-col">
+    <div class="mdl-card__supporting-text mdl-color-text--black-50 text-right">
+      <h4 class="">
+        לוח מודעות</h4>
 
-<div class="row">
+      <div class="mdl-card__supporting-text mdl-color-text--black-50">
+        <uib-carousel interval="5000">
+          <uib-slide ng-repeat="post in Dashboard.buildingPosts">
+            <div><h4>{{ post.title }}</h4>
 
-  <div class="col-lg-8 col-xs-12">
-    <div class="panel panel-default">
-      <div class="panel-heading text-right">לוח מודעות</div>
-      <div class="panel-body" style="height: 400px;">
-        <div>
-          <uib-carousel interval="5000">
-            <uib-slide ng-repeat="post in Dashboard.buildingPosts">
-              <div><h4>{{ post.title }}</h4>
-                <p>{{ post.body }}</p>
-              </div>
-            </uib-slide>
-          </uib-carousel>
-        </div>
+              <p>{{ post.body }}</p>
+            </div>
+          </uib-slide>
+        </uib-carousel>
       </div>
     </div>
   </div>
-
-  <div  class="col-xs-12 col-lg-4">
-    <oh-form></oh-form>
-
+  <div class="mdl-color--white mdl-shadow--2dp mdl-cell mdl-cell--4-col">
+    <div class="mdl-card__supporting-text mdl-color-text--black-50 text-right">
+      <h4>
+        רשימת דיירים
+      </h4>
+      <ul class="list-group">
+        <li class="list-group-item"
+            style="direction: rtl"
+            ng-repeat="apartment in Dashboard.Apartments">
+          <span class="apartment-number">{{ apartment.apartmentNumber }}.</span>
+          <span class="apartment-resident">{{ apartment.name }}-{{ apartment.lastname }}</span>
+        </li>
+      </ul>
+    </div>
   </div>
+</div>
+<!--<div class="col-xs-12 col-lg-4">-->
+<!--<oh-form></oh-form>-->
+
+<!--</div>-->
 </div>

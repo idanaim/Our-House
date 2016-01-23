@@ -1,10 +1,14 @@
-<div class="dropdown" uib-dropdown uib-keyboard-nav>
+<div class="dropdown mdl-color--green-700 mdl-text--color-white" uib-dropdown uib-keyboard-nav>
   <a class="dropdown-toggle notifications-bell" data-toggle="dropdown"
-     uib-dropdown-toggle><i
-    class="fa fa-bell fa-2x"></i> <b
+    style="margin-right: 10px;">
+  <i class="material-icons  mdl-color-text--white "
+     ng-if="!ohNotifications.badgeIcon">notifications</i><b
     class="badge bounceIn animated badge-location"
     ng-show="!!ohNotifications.badgeIcon">
-    {{ ohNotifications.badgeIcon }}
+
+
+    <i class="material-icons mdl-badge bounceIn animated mdl-color--green-700 mdl-color-text--white md-48"
+          ng-if="ohNotifications.badgeIcon" data-badge=" {{ ohNotifications.badgeIcon }}">notifications</i>
   </b></a>
   <ul class="uib-dropdown-menu  dropdown-menu-right alert-dropdown"
       style="color:black;width: 320px;font-size: 12px;text-align: right">

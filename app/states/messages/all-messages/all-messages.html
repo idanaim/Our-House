@@ -1,14 +1,36 @@
 <div class="messages">
-<h3 style="text-align:right;">ההודעות שלי <span class="fa fa-inbox fa-2x"></span></h3>
+  <h3 style="text-align:right;">ההודעות שלי <span
+    class="fa fa-inbox fa-2x"></span></h3>
+
+  <div class="actions">
+<span  ng-click="AllMessages.sendMessage()">
+    <i class="material-icons">mail_outline</i>
+    <span class="new-message-title">הודעה חדשה</span>
+  </span>
+   <span ng-click="AllMessages.refresh()"> <i class="material-icons">cached</i>
+<span class="new-message-title">
+    רענן
+  </span>
+     </span>
+  </div>
   <div class="col-lg-12 ">
     <div class="list-group">
-      <div  class="list-group-item"
-            ng-repeat="message in AllMessages.myMessages track by $index"
-            ng-click="AllMessages.openMessage(message)"
-            ng-class="{'new-message':!message.message.isRead}">
-        <div class="col-xs-2 from-message">{{ message.message.name }} {{ message.lastname }} </div>
+      <div class="list-group-item"
+           ng-repeat="message in AllMessages.myMessages track by $index"
+           ng-click="AllMessages.openMessage(message)"
+           ng-class="{'new-message':!message.message.isRead}">
+        <div class="col-xs-2 from-message">{{ message.message.name }} {{
+          message.lastname }}
+        </div>
         <div class="col-xs-7 message-title">{{ message.message.title }}</div>
-        <div class="col-xs-3 message-time">{{ message.message.createdAt |date:'medium'}}</div>
+        <div class="col-xs-3 message-time">{{ message.message.createdAt
+          |date:'medium'}}
+        </div>
+      </div>
+      <div ng-if="!AllMessages.myMessages.length" class="text-center">
+        <h4>
+          אין הודעות
+        </h4>
       </div>
     </div>
   </div>

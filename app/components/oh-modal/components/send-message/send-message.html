@@ -1,5 +1,5 @@
-<div class="send-message">
-  <div class="modal-header clearfix">
+<div class="send-message text-right">
+  <div class="modal-header clearfix mdl-color--green-700 mdl-color-text--white">
     <span class="pull-left" ng-click="$close()"><i
       class="fa fa-times"></i></span>
     <h4 class="modal-title" style="text-align: right"><i
@@ -11,57 +11,61 @@
           class="clearfix"
           ng-submit="">
 
-      <div>
-        <div class=" clearfix well">
-          <div class="col-xs-6">
-            <select name="singleSelect" id="type"
-                    ng-model="SendMessage.message.toSend">
-              <option value="">שליחה לועד הבית</option>
-              <!-- not selected / blank option -->
-              <option
-                ng-repeat="aprtment in SendMessage.Apartments track by $index"
-                value="{{ aprtment.objectId }}">
-                <span>{{ aprtment.apartmentNumber }}.</span>
-                <span> {{ aprtment.lastname }}</span>
-              </option>
-            </select>
-          </div>
-          <div class="col-xs-6">
-            <select name="singleSelect" id="singleSelect"
-                    ng-model="SendMessage.message.type">
-              <option value="">בחר סוג הודעה</option>
-              <!-- not selected / blank option -->
-              <option value="4">תלונה</option>
-              <!-- interpolation -->
-              <option value="2">הודעה רגילה לועד הבית</option>
-              <option value="3">אחר</option>
-            </select>
-          </div>
+      <div class="mdl-grid clearfix mdl-color--blue-grey-900 ">
+        <div class="mdl-col-6">
+          <select name="singleSelect" id="type"
+                  ng-model="SendMessage.message.toSend">
+            <option value="">שליחה לועד הבית</option>
+            <!-- not selected / blank option -->
+            <option
+              ng-repeat="aprtment in SendMessage.Apartments track by $index"
+              value="{{ aprtment.objectId }}">
+              <span>{{ aprtment.apartmentNumber }}.</span>
+              <span> {{ aprtment.lastname }}</span>
+            </option>
+          </select>
         </div>
-        <div class="">
-          <div class="form-group"
-               style="    width: 98%;">
-            <label for="title" class="control-label">הכנס כותרת</label>
-            <input type="text" class="form-control" name="title" id="title"
-                   ng-model="SendMessage.message.title" required/>
-          </div>
+        <div class="mdl-col-6">
+          <select name="singleSelect" id="singleSelect"
+                  style="margin-left: 30px"
+                  ng-model="SendMessage.message.type">
+            <option value="">בחר סוג הודעה</option>
+            <!-- not selected / blank option -->
+            <option value="4">תלונה</option>
+            <!-- interpolation -->
+            <option value="2">הודעה רגילה לועד הבית</option>
+            <option value="3">אחר</option>
+          </select>
         </div>
       </div>
-      <div class="">
+      <div class="mdl-grid text-right">
         <div class="form-group"
              style="    width: 98%;">
+          <label for="title" class="control-label">הכנס כותרת</label>
+          <input type="text" class="mdl-textfield__input" name="title"
+                 id="title"
+                 ng-model="SendMessage.message.title" required/>
+        </div>
+      </div>
+
+
+      <div class="mdl-grid text-right">
+        <div class=""
+          style="width: 100%">
           <label class="control-label">תוכן</label>
-            <textarea class="form-control" rows="3"
+            <textarea class="mdl-textfield__input" rows="3"
                       ng-model="SendMessage.message.content"></textarea>
         </div>
       </div>
+
       <div class="footer">
-        <div class="btn-group">
-          <button class="btn btn-success" ng-click="SendMessage.send()">שלח
+        <div class="btn-group mdl-grid">
+          <button
+            class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-color-text--white mdl-color--green-700"
+            ng-click="SendMessage.send()">שלח
           </button>
         </div>
       </div>
+    </form>
   </div>
-  </form>
-</div>
 </div>

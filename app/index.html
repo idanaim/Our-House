@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+        rel="stylesheet">
   <script>
     // Dynamic creation of base tag, to make html5mode work locally
     // This script will remove itself upon execution
@@ -13,41 +15,19 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>OurHouse</title>
+  <title>Our House</title>
 </head>
 <body>
-<div class="wrapper">
-  <div class="box">
-    <div class="row row-offcanvas row-offcanvas-left">
 
-      <!-- sidebar -->
-     <sidebar ></sidebar>
-      <!-- /sidebar -->
-      <!-- main right col -->
-      <div class="column col-sm-10 col-xs-11" id="main">
-
-        <!-- top nav -->
-        <!--<ng-include src="'/partials/_header.html'"></ng-include>-->
-        <oh-header></oh-header>
-        <!--<header-notification></header-notification>-->
-        <!-- /top nav -->
-
-        <div class="padding">
-          <div class="col-sm-12">
-
-            <!-- content -->
-            <div class="row">
-
-             <ui-view></ui-view>
-            </div><!--/row-->
-
-          </div><!-- /col-9 -->
-        </div><!-- /padding -->
-      </div>
-      <!-- /main -->
-
-    </div>
-  </div>
+<div
+  class="demo-layout mdl-layout mdl-js-layout mdl-layout--fixed-drawer mdl-layout--fixed-header">
+  <oh-header
+    class="demo-header mdl-layout__header mdl-color--green-700"></oh-header>
+  <sidebar
+    class="demo-drawer mdl-layout__drawer mdl-color--blue-grey-900 mdl-color-text--blue-grey-50"></sidebar>
+  <main class="mdl-layout__content mdl-color--grey-100">
+    <ui-view></ui-view>
+  </main>
 </div>
 </body>
 </html>

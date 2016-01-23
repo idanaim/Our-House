@@ -9,7 +9,7 @@ import { homeRoutes } from 'config/routes/home';
 import { staticRoutes } from 'config/routes/static';
 
 const defaultRoute = /* @ngInject */ ($urlRouterProvider) => {
-  $urlRouterProvider.otherwise('/dashboard');
+  $urlRouterProvider.otherwise('/');
 };
 
 export default angular.module('OurHouse.routes', ['ui.router'])

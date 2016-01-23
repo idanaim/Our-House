@@ -53,7 +53,6 @@ export class RegistrationBuildingController {
       if (this.currentBuilding.building.jackpot != this.currentBuilding.parseBuilding._toFullJSON().jackpot) {
         this._saveBuildingJackpot();
       }
-      this._updateUserVisit();
       apartment.buildingId = this.buildingId;
       if (this.apartMonthsMap[apartment.number]) {
         this.updateApartmentPaid(this.apartMonthsMap[apartment.number].monthParse, apartment)
@@ -62,6 +61,9 @@ export class RegistrationBuildingController {
         this.MonthPaid.savePaymentsPerUser(apartment);
       }
     });
+    if (this.User.getCurrentUser().firstTime) {
+      this._updateUserVisit();
+    }
   }
 
   markAll(num) {

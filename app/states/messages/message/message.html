@@ -1,39 +1,65 @@
 <div class="single-message">
 
-  <div class="row">
-    <div class="col-lg-3">
-      <div class="row actions">
-        <div class="action-box"
-          ng-click="Message.replay()"><i class="fa fa-reply"></i></div>
-        <div class="action-box"
-          ng-click="Message.deleteMessage()">X</div>
+  <div class="demo-ribbon mdl-color--blue-grey-900">
+    <div class="text-left">
+      <br>
+    <button
+      class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-color--green-600 mdl-color-text--white"
+      ng-click="Message.deleteMessage()">
+      <i class="material-icons">delete</i>
+    </button>
+    <button
+      class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-color--green-600 mdl-color-text--white"
+      ng-click="Message.replay()">
+      <i class="material-icons">replay</i>
 
-      </div>
+    </button>
     </div>
-    <h3 class="col-xs-9">{{ Message.currentMessage.message.title }}</h3>
   </div>
-  <div class="message-content"
-       ng-bind-html="Message.currentMessage.message.content | breakfilter"></div>
+  <div class="demo-main">
+    <div class="demo-container mdl-grid">
+      <div
+        class="mdl-cell mdl-cell--2-col mdl-cell--hide-tablet mdl-cell--hide-phone"></div>
+      <div
+        class="demo-content mdl-color--white mdl-shadow--4dp content mdl-color-text--grey-800 mdl-cell mdl-cell--8-col">
+        <div class="demo-crumbs mdl-color-text--grey-500">
+          {{ Message.currentMessage.message.createdAt |date : format : 'fullDate' }}
+        </div>
+        <h3>{{ Message.currentMessage.message.title }}</h3>
 
-  <div class="replay-message"
-    ng-if="Message.showReply">
-    <div class="form-group">
-      <label for="title" class="control-label">הכנס כותרת</label>
-      <input type="text" class="form-control" name="title" id="title"
-             ng-model="Message.replyMessage.title" required/>
-    </div>
+        <p ng-bind-html="Message.currentMessage.message.content | breakfilter">
+
+        </p>
+
+        <div class="replay-message"
+             ng-if="Message.showReply">
+          <div class="form-group">
+            <label for="title" class="form-label">הכנס כותרת</label>
+            <input type="text" class="mdl-textfield__input" name="title" id="title"
+                   ng-model="Message.replyMessage.title" required/>
+          </div>
 
 
-    <div class="row">
-      <div class="form-group">
-        <label class="control-label">תוכן</label>
-            <textarea class="form-control" rows="3"
+
+            <form>
+              <div class="mdl-grid">
+                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label"
+                  style="width: 100%;">
+                  <label class="form-label">תוכן</label>
+            <textarea class="mdl-textfield__input"  rows="5"
+                      style="width: 100%;text-align: right"
                       ng-model="Message.replyMessage.content"></textarea>
+                  </div>
+                </div>
+              </form>
+          <div class="btn-group">
+            <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-color-text--white mdl-color--green-600" ng-click="Message.send()">שלח
+            </button>
+          </div>
+
+
+        </div>
       </div>
-    </div>
-    <div class="btn-group">
-      <button class="btn btn-success" ng-click="Message.send()">שלח
-      </button>
     </div>
 
 

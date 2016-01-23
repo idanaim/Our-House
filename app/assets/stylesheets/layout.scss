@@ -317,9 +317,7 @@ small.text-muted {
   color: #fff;
 }
 
-.newNote {
-  background: beige;
-}
+
 .send-message,
 .admin-post{
   width:540px;
@@ -334,4 +332,14 @@ small.text-muted {
   li{
     padding-left: 10px!important;
   }
+}
+.newNote {
+  background: beige!important;
+}
+.mdl-badge[data-badge]:after{
+  right:-11px!important;
+}
+.badge-location{
+  left:0!important;
+  top:0!important;
 }
