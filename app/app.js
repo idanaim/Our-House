@@ -24,7 +24,7 @@ import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap'
 import 'material-design-lite/material.js';
 import 'material-design-lite/material.css';
-import 'material-design-icons';
+//import 'material-design-icons/';
 import 'angular-chart.js';
 import 'angular-animate';
 import 'angular-chart.js/dist/angular-chart.css';
