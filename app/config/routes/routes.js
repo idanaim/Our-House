@@ -1,3 +1,4 @@
+import { forumRoutes } from './forum';
 import { registrationBuildingRoutes } from './registration-building';
 import { messagesRoutes } from './messages';
 import { professionalRoutes } from './professional';
@@ -13,6 +14,7 @@ const defaultRoute = /* @ngInject */ ($urlRouterProvider) => {
 };
 
 export default angular.module('OurHouse.routes', ['ui.router'])
+  .config(forumRoutes)
   .config(registrationBuildingRoutes)
   .config(messagesRoutes)
   .config(professionalRoutes)

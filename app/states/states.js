@@ -1,3 +1,4 @@
+import { ForumController } from './forum/forum';
 import { RegistrationBuildingController } from './registration-building/registration-building';
 import { MessagesAllMessagesController } from './messages/all-messages/all-messages';
 import { MessagesMessageController } from './messages/message/message';
@@ -14,4 +15,5 @@ export default angular.module('OurHouse.controllers', [])
   .controller('MessagesController', MessagesController)
   .controller('MessagesMessageController', MessagesMessageController)
   .controller('MessagesAllMessagesController', MessagesAllMessagesController)
-  .controller('RegistrationBuildingController', RegistrationBuildingController);
+  .controller('RegistrationBuildingController', RegistrationBuildingController)
+  .controller('ForumController', ForumController);

@@ -3,7 +3,8 @@
     <i class="fa fa-comments fa-fw"></i>
     Form
     <div class="btn-group pull-right">
-      <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">
+      <button type="button" class="btn btn-default btn-xs dropdown-toggle"
+              data-toggle="dropdown">
         <i class="fa fa-chevron-down"></i>
       </button>
       <ul class="dropdown-menu slidedown">
@@ -37,77 +38,89 @@
     </div>
   </div>
   <!-- /.panel-heading -->
-  <div class="panel-body">
+  <div class="panel-body"
+    style="direction: rtl">
     <ul class="chat">
-      <li class="left clearfix">
-                <span class="chat-img pull-left">
-                    <img src="http://placehold.it/50/55C1E7/fff" alt="User Avatar" class="img-circle">
-                </span>
-        <div class="chat-body clearfix">
-          <div class="header">
-            <strong class="primary-font">Jack Sparrow</strong>
-            <small class="pull-right text-muted">
-              <i class="fa fa-clock-o fa-fw"></i> 12 mins ago
-            </small>
-          </div>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum ornare dolor, quis ullamcorper ligula sodales.
-          </p>
-        </div>
+      <li ng-repeat="message in ohForm.chats"
+          class="clearfix text-wrapper animated fadeIn mdl-shadow--0dp"
+          ng-class="{left:message.userId==ohForm.currentUser.objectId,
+                  right:message.userId!=ohForm.currentUser.objectId}">
+         <span class="chat-img "
+               ng-class="{'pull-right':message.userId==ohForm.currentUser.objectId,
+               'pull-left':message.userId!=ohForm.currentUser.objectId}">
+      <img src="http://placehold.it/50/55C1E7/fff"
+      alt="User Avatar" class="img-circle">
+      </span>
+
+      <div class="chat-body clearfix">
+      <div class="header"
+        ng-class="{'text-right':message.userId==ohForm.currentUser.objectId,
+        'text-left  ':message.userId!=ohForm.currentUser.objectId}">
+      <strong class="primary-font">{{ message.firstname }} {{ message.lastname }}</strong>
+      <small class="text-muted"
+             ng-class="{'pull-right':message.userId!=ohForm.currentUser.objectId,
+               'pull-left':message.userId==ohForm.currentUser.objectId}">
+      <i class="fa fa-clock-o fa-fw"></i>{{ message.createdAt }}
+      </small>
+      </div>
+      <p ng-class="{'pull-right':message.userId!=ohForm.currentUser.objectId,
+               'pull-left':message.userId==ohForm.currentUser.objectId}">
+        {{ message.message }}
+      </p>
+      </div>
       </li>
-      <li class="right clearfix">
-                <span class="chat-img pull-right">
-                    <img src="http://placehold.it/50/FA6F57/fff" alt="User Avatar" class="img-circle">
-                </span>
-        <div class="chat-body clearfix">
-          <div class="header">
-            <small class=" text-muted">
-              <i class="fa fa-clock-o fa-fw"></i> 13 mins ago</small>
-            <strong class="pull-right primary-font">Bhaumik Patel</strong>
-          </div>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum ornare dolor, quis ullamcorper ligula sodales.
-          </p>
-        </div>
-      </li>
-      <li class="left clearfix">
-                <span class="chat-img pull-left">
-                    <img src="http://placehold.it/50/55C1E7/fff" alt="User Avatar" class="img-circle">
-                </span>
-        <div class="chat-body clearfix">
-          <div class="header">
-            <strong class="primary-font">Jack Sparrow</strong>
-            <small class="pull-right text-muted">
-              <i class="fa fa-clock-o fa-fw"></i> 14 mins ago</small>
-          </div>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum ornare dolor, quis ullamcorper ligula sodales.
-          </p>
-        </div>
-      </li>
-      <li class="right clearfix">
-                <span class="chat-img pull-right">
-                    <img src="http://placehold.it/50/FA6F57/fff" alt="User Avatar" class="img-circle">
-                </span>
-        <div class="chat-body clearfix">
-          <div class="header">
-            <small class=" text-muted">
-              <i class="fa fa-clock-o fa-fw"></i> 15 mins ago</small>
-            <strong class="pull-right primary-font">Bhaumik Patel</strong>
-          </div>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum ornare dolor, quis ullamcorper ligula sodales.
-          </p>
-        </div>
-      </li>
+      <!--&lt;!&ndash;<li class="right clearfix">&ndash;&gt;-->
+      <!--&lt;!&ndash;<span class="chat-img pull-right">&ndash;&gt;-->
+      <!--&lt;!&ndash;<img src="http://placehold.it/50/FA6F57/fff"&ndash;&gt;-->
+      <!--&lt;!&ndash;alt="User Avatar" class="img-circle">&ndash;&gt;-->
+      <!--&lt;!&ndash;</span>&ndash;&gt;-->
+
+      <!--&lt;!&ndash;<div class="chat-body clearfix">&ndash;&gt;-->
+      <!--&lt;!&ndash;<div class="header">&ndash;&gt;-->
+      <!--&lt;!&ndash;<small class=" text-muted">&ndash;&gt;-->
+      <!--&lt;!&ndash;<i class="fa fa-clock-o fa-fw"></i> 13 mins ago&ndash;&gt;-->
+      <!--&lt;!&ndash;</small>&ndash;&gt;-->
+      <!--&lt;!&ndash;<strong class="pull-right primary-font">Bhaumik Patel</strong>&ndash;&gt;-->
+      <!--&lt;!&ndash;</div>&ndash;&gt;-->
+      <!--&lt;!&ndash;<p>&ndash;&gt;-->
+      <!--&lt;!&ndash;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur&ndash;&gt;-->
+      <!--&lt;!&ndash;bibendum ornare dolor, quis ullamcorper ligula sodales.&ndash;&gt;-->
+      <!--&lt;!&ndash;</p>&ndash;&gt;-->
+      <!--&lt;!&ndash;</div>&ndash;&gt;-->
+      <!--&lt;!&ndash;</li>&ndash;&gt;-->
+        <!-- -->
+
+        <!--<div class="chat-body clearfix"-->
+             <!--ng-class="{'text-right':message.userId!=ohForm.currentUser.objectId}">-->
+          <!--<div class="header">-->
+            <!--<strong class="primary-font">{{ message.firstname }}-->
+              <!--{{message.lastname }}</strong>-->
+            <!--<small class=" text-muted"-->
+                   <!--ng-class="{'pull-right':message.userId==ohForm.currentUser.objectId,-->
+              <!--'pull-left':message.userId!=ohForm.currentUser.objectId}">-->
+              <!--<i class="fa fa-clock-o fa-fw"></i> {{ message.createdAt }}-->
+            <!--</small>-->
+          <!--</div>-->
+          <!--<p ng-class="{'text-right':message.userId==ohForm.currentUser.objectId,-->
+                        <!--'text-left':message.userId!=ohForm.currentUser.objectId}">-->
+            <!--{{ message.message }}-->
+          <!--</p>-->
+        <!--</div>-->
+
+      <!--</li>-->
     </ul>
   </div>
   <!-- /.panel-body -->
   <div class="panel-footer">
     <div class="input-group">
-      <input id="btn-input" type="text" class="form-control input-sm" placeholder="Type your message here...">
+      <input id="btn-input" type="text" class="form-control input-sm"
+             ng-model="ohForm.message"
+             placeholder="Type your message here...">
             <span class="input-group-btn">
-                <button class="btn btn-warning btn-sm" id="btn-chat">
+                <button class="btn btn-warning btn-sm"
+                        id="btn-chat"
+                        ng-click="ohForm.sendMessage()"
+                  >
                   Send
                 </button>
             </span>

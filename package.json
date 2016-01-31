@@ -35,9 +35,8 @@
     "browser-sync": "2.10.1",
     "expose-loader": "0.7.1",
     "font-awesome": "4.5.0",
-    "jquery": "2.1.4"
-  },
-  "devDependencies": {
+    "jquery": "2.1.4",
+    "material-design-lite": "1.0.6",
     "angular-sanitize": "1.4.8",
     "autoprefixer-loader": "3.1.0",
     "babel-core": "5.8.29",

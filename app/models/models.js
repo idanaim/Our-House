@@ -1,3 +1,4 @@
+import { Forum } from './forum';
 import { MonthPaid } from './month-paid';
 import { Professionals } from './professionals';
 import { Message } from './message';
@@ -16,4 +17,5 @@ export default angular.module('OurHouse.models', [])
   .service('Notifications', Notifications)
   .service('Message', Message)
   .service('Professionals', Professionals)
-  .service('MonthPaid', MonthPaid);
+  .service('MonthPaid', MonthPaid)
+  .service('Forum', Forum);
